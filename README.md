@@ -1,45 +1,34 @@
-**Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**
+# EasyRetouch
 
-When you're done, you can delete the content in this README and update the file with details for others getting started with your repository.
+## 概要
+・クリップボードから画像を取り込む
 
-*We recommend that you open this README in another tab as you perform the tasks below. You can [watch our video](https://youtu.be/0ocf7u76WSo) for a full demo of all the steps in this tutorial. Open the video in a new tab to avoid leaving Bitbucket.*
+・画像ファイルから画像を読み込む
 
----
+・適切な大きさに縮小する
 
-## Edit a file
+・周囲を囲む
 
-You’ll start by editing this README file to learn how to edit a file in Bitbucket.
+・四角く塗りつぶす
 
-1. Click **Source** on the left side.
-2. Click the README.md link from the list of files.
-3. Click the **Edit** button.
-4. Delete the following text: *Delete this line to make a change to the README from Bitbucket.*
-5. After making your change, click **Commit** and then **Commit** again in the dialog. The commit page will open and you’ll see the change you just made.
-6. Go back to the **Source** page.
+・トリミングする
 
----
+・保存するときに自動的に名前を付ける
 
-## Create a file
+・ひとつの工程分だけ戻す
 
-Next, you’ll add a new file to this repository.
+といったことが出来ます。
 
-1. Click the **New file** button at the top of the **Source** page.
-2. Give the file a filename of **contributors.txt**.
-3. Enter your name in the empty file space.
-4. Click **Commit** and then **Commit** again in the dialog.
-5. Go back to the **Source** page.
+<img src="https://github.com/s51517765/EasyRetouch/blob/master/1.gif">
 
-Before you move on, go ahead and explore the repository. You've already seen the **Source** page, but check out the **Commits**, **Branches**, and **Settings** pages.
+## 動作要件 (Requirements)
 
----
+C# / Visual studio
 
-## Clone a repository
+## 技術的解説 (Technical explanation)
 
-Use these steps to clone from SourceTree, our client for using the repository command-line free. Cloning allows you to work on your files locally. If you don't yet have SourceTree, [download and install first](https://www.sourcetreeapp.com/). If you prefer to clone from the command line, see [Clone a repository](https://confluence.atlassian.com/x/4whODQ).
+https://s51517765.hatenadiary.jp/entry/2019/xx/xx/xxxx
 
-1. You’ll see the clone button under the **Source** heading. Click that button.
-2. Now click **Check out in SourceTree**. You may need to create a SourceTree account or log in.
-3. When you see the **Clone New** dialog in SourceTree, update the destination path and name if you’d like to and then click **Clone**.
-4. Open the directory you just created to see your repository’s files.
+## ライセンス (License)
 
-Now that you're more familiar with your Bitbucket repository, go ahead and add a new file locally. You can [push your change back to Bitbucket with SourceTree](https://confluence.atlassian.com/x/iqyBMg), or you can [add, commit,](https://confluence.atlassian.com/x/8QhODQ) and [push from the command line](https://confluence.atlassian.com/x/NQ0zDQ).
+This software is released under the MIT License, see LICENSE.
