@@ -32,3 +32,5 @@ https://s51517765.hatenadiary.jp/entry/2019/xx/xx/xxxx
 ## ライセンス (License)
 
 This software is released under the MIT License, see LICENSE.
+
+※日本語のプロジェクト名にしてしまったため文字化けしてビルド失敗する場合があります
