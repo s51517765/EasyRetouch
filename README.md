@@ -27,7 +27,7 @@ C# / Visual studio
 
 ## 技術的解説 (Technical explanation)
 
-https://s51517765.hatenadiary.jp/entry/2019/xx/xx/xxxx
+https://s51517765.hatenadiary.jp/entry/2020/02/25/073000
 
 ## ライセンス (License)
 
