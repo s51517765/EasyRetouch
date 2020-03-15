@@ -38,3 +38,6 @@ https://s51517765.hatenadiary.jp/entry/2020/02/25/073000
 This software is released under the MIT License, see LICENSE.
 
 ※日本語のプロジェクト名にしてしまったため文字化けしてビルド失敗する場合があります
+
+
+### このアプリは https://github.com/moko-vfx/TenpuGazoMaker のコードを一部使用させていただいています。
