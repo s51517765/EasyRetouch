@@ -64,27 +64,28 @@
             this.labelStartMsg3 = new System.Windows.Forms.Label();
             this.buttonUndo = new System.Windows.Forms.Button();
             this.groupBoxTrimming = new System.Windows.Forms.GroupBox();
-            this.buttonTrimming = new System.Windows.Forms.Button();
-            this.numericUpDownTrimUp = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownTrimDown = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownTrimRight = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownTrimLeft = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.numericUpDownTrimLeft = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownTrimRight = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownTrimDown = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownTrimUp = new System.Windows.Forms.NumericUpDown();
+            this.buttonTrimming = new System.Windows.Forms.Button();
             this.buttonFileOpen = new System.Windows.Forms.Button();
             this.buttonSnappingTool = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.buttonTrimingValueReset = new System.Windows.Forms.Button();
             this.groupBoxDrowEdge.SuspendLayout();
             this.groupBoxDrowMask.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLineWidth)).BeginInit();
             this.groupBoxTrimming.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTrimUp)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTrimDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTrimRight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTrimLeft)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTrimRight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTrimDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTrimUp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -462,6 +463,7 @@
             // 
             // groupBoxTrimming
             // 
+            this.groupBoxTrimming.Controls.Add(this.buttonTrimingValueReset);
             this.groupBoxTrimming.Controls.Add(this.label6);
             this.groupBoxTrimming.Controls.Add(this.label5);
             this.groupBoxTrimming.Controls.Add(this.label4);
@@ -473,10 +475,74 @@
             this.groupBoxTrimming.Controls.Add(this.buttonTrimming);
             this.groupBoxTrimming.Location = new System.Drawing.Point(1260, 90);
             this.groupBoxTrimming.Name = "groupBoxTrimming";
-            this.groupBoxTrimming.Size = new System.Drawing.Size(200, 147);
+            this.groupBoxTrimming.Size = new System.Drawing.Size(200, 195);
             this.groupBoxTrimming.TabIndex = 8;
             this.groupBoxTrimming.TabStop = false;
             this.groupBoxTrimming.Text = "Trimming";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(92, 116);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(15, 15);
+            this.label6.TabIndex = 24;
+            this.label6.Text = "L";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(92, 87);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(16, 15);
+            this.label5.TabIndex = 23;
+            this.label5.Text = "R";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(92, 57);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(17, 15);
+            this.label4.TabIndex = 22;
+            this.label4.Text = "D";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(92, 28);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(17, 15);
+            this.label3.TabIndex = 21;
+            this.label3.Text = "U";
+            // 
+            // numericUpDownTrimLeft
+            // 
+            this.numericUpDownTrimLeft.Location = new System.Drawing.Point(126, 112);
+            this.numericUpDownTrimLeft.Name = "numericUpDownTrimLeft";
+            this.numericUpDownTrimLeft.Size = new System.Drawing.Size(68, 22);
+            this.numericUpDownTrimLeft.TabIndex = 9;
+            // 
+            // numericUpDownTrimRight
+            // 
+            this.numericUpDownTrimRight.Location = new System.Drawing.Point(126, 84);
+            this.numericUpDownTrimRight.Name = "numericUpDownTrimRight";
+            this.numericUpDownTrimRight.Size = new System.Drawing.Size(68, 22);
+            this.numericUpDownTrimRight.TabIndex = 8;
+            // 
+            // numericUpDownTrimDown
+            // 
+            this.numericUpDownTrimDown.Location = new System.Drawing.Point(126, 53);
+            this.numericUpDownTrimDown.Name = "numericUpDownTrimDown";
+            this.numericUpDownTrimDown.Size = new System.Drawing.Size(68, 22);
+            this.numericUpDownTrimDown.TabIndex = 7;
+            // 
+            // numericUpDownTrimUp
+            // 
+            this.numericUpDownTrimUp.Location = new System.Drawing.Point(126, 24);
+            this.numericUpDownTrimUp.Name = "numericUpDownTrimUp";
+            this.numericUpDownTrimUp.Size = new System.Drawing.Size(68, 22);
+            this.numericUpDownTrimUp.TabIndex = 6;
             // 
             // buttonTrimming
             // 
@@ -488,70 +554,6 @@
             this.buttonTrimming.Text = "Trim";
             this.buttonTrimming.UseVisualStyleBackColor = true;
             this.buttonTrimming.Click += new System.EventHandler(this.buttonTrimming_Click);
-            // 
-            // numericUpDownTrimUp
-            // 
-            this.numericUpDownTrimUp.Location = new System.Drawing.Point(126, 24);
-            this.numericUpDownTrimUp.Name = "numericUpDownTrimUp";
-            this.numericUpDownTrimUp.Size = new System.Drawing.Size(68, 22);
-            this.numericUpDownTrimUp.TabIndex = 6;
-            // 
-            // numericUpDownTrimDown
-            // 
-            this.numericUpDownTrimDown.Location = new System.Drawing.Point(126, 53);
-            this.numericUpDownTrimDown.Name = "numericUpDownTrimDown";
-            this.numericUpDownTrimDown.Size = new System.Drawing.Size(68, 22);
-            this.numericUpDownTrimDown.TabIndex = 7;
-            // 
-            // numericUpDownTrimRight
-            // 
-            this.numericUpDownTrimRight.Location = new System.Drawing.Point(126, 84);
-            this.numericUpDownTrimRight.Name = "numericUpDownTrimRight";
-            this.numericUpDownTrimRight.Size = new System.Drawing.Size(68, 22);
-            this.numericUpDownTrimRight.TabIndex = 8;
-            // 
-            // numericUpDownTrimLeft
-            // 
-            this.numericUpDownTrimLeft.Location = new System.Drawing.Point(126, 112);
-            this.numericUpDownTrimLeft.Name = "numericUpDownTrimLeft";
-            this.numericUpDownTrimLeft.Size = new System.Drawing.Size(68, 22);
-            this.numericUpDownTrimLeft.TabIndex = 9;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(92, 28);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(17, 15);
-            this.label3.TabIndex = 21;
-            this.label3.Text = "U";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(92, 57);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(17, 15);
-            this.label4.TabIndex = 22;
-            this.label4.Text = "D";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(92, 87);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(16, 15);
-            this.label5.TabIndex = 23;
-            this.label5.Text = "R";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(92, 116);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(15, 15);
-            this.label6.TabIndex = 24;
-            this.label6.Text = "L";
             // 
             // buttonFileOpen
             // 
@@ -585,7 +587,19 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseClick);
+            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
+            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
+            this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
+            // 
+            // buttonTrimingValueReset
+            // 
+            this.buttonTrimingValueReset.Location = new System.Drawing.Point(119, 156);
+            this.buttonTrimingValueReset.Name = "buttonTrimingValueReset";
+            this.buttonTrimingValueReset.Size = new System.Drawing.Size(75, 28);
+            this.buttonTrimingValueReset.TabIndex = 25;
+            this.buttonTrimingValueReset.Text = "Reaset";
+            this.buttonTrimingValueReset.UseVisualStyleBackColor = true;
+            this.buttonTrimingValueReset.Click += new System.EventHandler(this.buttonTrimingValueReset_Click);
             // 
             // Form1
             // 
@@ -615,7 +629,7 @@
             this.MaximumSize = new System.Drawing.Size(1490, 884);
             this.MinimumSize = new System.Drawing.Size(1290, 884);
             this.Name = "Form1";
-            this.Text = "Easy Retouch      *Ver.2020-02-16";
+            this.Text = "Easy Retouch      *Ver.2020-03-15";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form1_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form1_DragEnter);
@@ -628,10 +642,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLineWidth)).EndInit();
             this.groupBoxTrimming.ResumeLayout(false);
             this.groupBoxTrimming.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTrimUp)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTrimDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTrimRight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTrimLeft)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTrimRight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTrimDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTrimUp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -687,6 +701,7 @@
         private System.Windows.Forms.NumericUpDown numericUpDownTrimUp;
         private System.Windows.Forms.Button buttonTrimming;
         private System.Windows.Forms.Button buttonFileOpen;
+        private System.Windows.Forms.Button buttonTrimingValueReset;
     }
 }
 

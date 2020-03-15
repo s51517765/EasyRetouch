@@ -33,44 +33,39 @@ namespace 画像処理
         int FinalPictureHeight = 750;
         float reSizeRate;
 
-        Color[,] pic = new Color[pictureBoxWidth, pictureBoxHeight];
-
         //描画先とするImageオブジェクトを作成する
         Bitmap canvas = new Bitmap(pictureBoxWidth, pictureBoxHeight);
+        Graphics g;
+        Bitmap backupImage;
 
-        private void storeCurrentImage()
+        private bool storeCurrentImage()
         {
-            // https://dobon.net/vb/dotnet/graphics/imagefromfile.html
             try
             {
-                Image img = pictureBox1.Image;
-                Bitmap bitmap = new Bitmap(img);
-
-
-                for (int x = 0; x < FinalPictureWidth; x++)
-                {
-                    for (int y = 0; y < FinalPictureHeight; y++)
-                    {
-                        pic[x, y] = bitmap.GetPixel(x, y);
-                    }
-                }
+                // 画像のバックアップを取得
+                backupImage = new Bitmap(pictureBox1.Image);
+                return true;
             }
             catch
             {
-                //pass
+                MessageBox.Show("No Image!");
+                return false;
             }
         }
 
         private void buttonUndo_Click(object sender, EventArgs e)
         {
-            for (int x = 0; x < FinalPictureWidth; x++)
+            if (backupImage == null) return;
+            try
             {
-                for (int y = 0; y < FinalPictureHeight; y++)
-                {
-                    canvas.SetPixel(x, y, pic[x, y]);
-                }
+                // 先にバックアップしていた画像で塗り潰す
+                if (backupImage != null) g.DrawImage(backupImage, 0, 0);
+                pictureBox1.Image = canvas;
             }
-            pictureBox1.Image = canvas;
+            catch
+            {
+                //pass
+            }
         }
 
         private void PreviewDrowPicture(Image defImg = null)
@@ -103,9 +98,6 @@ namespace 画像処理
                 //Imageオブジェクトのリソースを解放する
                 img.Dispose();
 
-                //Graphicsオブジェクトのリソースを解放する
-                g.Dispose();
-
                 labelStartMsg1.Visible = false;
                 labelStartMsg2.Visible = false;
                 labelStartMsg3.Visible = false;
@@ -120,12 +112,12 @@ namespace 画像処理
         }
         private void fillOutOfCanvas()
         {   //ImageオブジェクトのGraphicsオブジェクトを作成する
-            Graphics g = Graphics.FromImage(canvas);
+            g = Graphics.FromImage(canvas);
             SolidBrush brush = new SolidBrush(Color.Gainsboro);
 
-            g.FillRectangle(brush, FinalPictureWidth, 0, 1000, 700);
-            g.FillRectangle(brush, 0, FinalPictureHeight, 1000, 700);
-            g.Dispose();
+            g.FillRectangle(brush, FinalPictureWidth, 0, 1000, 1000);
+            g.FillRectangle(brush, 0, FinalPictureHeight, 1000, 1000);
+
             pictureBox1.Image = canvas;
         }
 
@@ -147,6 +139,7 @@ namespace 画像処理
             textBoxFileName.Text = fileName[0];
 
             PreviewDrowPicture();
+            storeCurrentImage();
         }
 
         private void Form1_DragEnter(object sender, DragEventArgs e)
@@ -180,7 +173,7 @@ namespace 画像処理
                 //描画先とするImageオブジェクトを作成する
                 Bitmap canvas = new Bitmap(FinalPictureWidth, FinalPictureHeight);
                 //ImageオブジェクトのGraphicsオブジェクトを作成する
-                Graphics g = Graphics.FromImage(canvas);
+                g = Graphics.FromImage(canvas);
 
                 //トリミング
                 Rectangle srcRect = new Rectangle(0, 0, FinalPictureWidth, FinalPictureHeight);
@@ -204,7 +197,7 @@ namespace 画像処理
 
         private void buttonDrowEdgeLine_Click(object sender, EventArgs e)
         {
-            storeCurrentImage();
+            if (!storeCurrentImage()) return;
 
             Color color;
             if (radioButtonDrowEdge_Red.Checked) color = Color.FromArgb(255, 0, 0);
@@ -237,142 +230,28 @@ namespace 画像処理
 
         private void buttonDrowMask_Click(object sender, EventArgs e)
         {
-            storeCurrentImage();
+            if (!storeCurrentImage()) return;
 
             FlagMask = 1;
             buttonDrowMask.Enabled = false;
             buttonSquereLine.Enabled = true;
         }
 
-        private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
+        private void buttonSquereLine_Click(object sender, EventArgs e)
         {
-            storeCurrentImage();
+            if (!storeCurrentImage()) return;
 
-            SolidBrush brush = new SolidBrush(Color.FromArgb(100, 200, 0, 00));
-            if (radioButtonDrowMask_Red.Checked) brush.Color = Color.FromArgb(255, 0, 0);
-            else if (radioButtonDrowMask_Yellow.Checked) brush.Color = Color.FromArgb(255, 255, 0);
-            else if (radioButtonDrowMask_Green.Checked) brush.Color = Color.FromArgb(0, 255, 0);
-            else if (radioButtonDrowMask_Blue.Checked) brush.Color = Color.FromArgb(0, 0, 255);
-            else brush.Color = Color.FromArgb(0, 0, 0);
-
-            Color color;
-            if (radioButtonSqLine_Red.Checked) color = Color.FromArgb(255, 0, 0);
-            else if (radioButtonSqLine_Yellow.Checked) color = Color.FromArgb(255, 255, 0);
-            else if (radioButtonSqLine_Green.Checked) color = Color.FromArgb(0, 255, 0);
-            else if (radioButtonSqLine_Blue.Checked) color = Color.FromArgb(0, 0, 255);
-            else color = Color.FromArgb(0, 0, 0);
-
-            if (FlagMask == 1)
-            {
-                Mask_address[0] = e.Location.X;//配列の0番にクリックした座標を入れる
-                Mask_address[1] = e.Location.Y;//配列の1番にクリックした座標を入れる
-                FlagMask = 2;
-
-                //ImageオブジェクトのGraphicsオブジェクトを作成する
-                Graphics g = Graphics.FromImage(canvas);
-
-                //Penオブジェクトの作成(幅1の黒色)
-                Pen p = new Pen(brush, 1);
-                g.DrawRectangle(p, Mask_address[0], Mask_address[1], 1, 1);
-                g.Dispose();
-            }
-            else if (FlagMask == 2)
-            {
-                Mask_address[2] = e.Location.X;//配列の2番に現在の座標を入れる
-                Mask_address[3] = e.Location.Y;//配列の3番に現在の座標を入れる
-
-                if (Mask_address[0] > Mask_address[2]) swap_address(ref Mask_address[0], ref Mask_address[2]);
-                if (Mask_address[1] > Mask_address[3]) swap_address(ref Mask_address[1], ref Mask_address[3]);
-
-                //ImageオブジェクトのGraphicsオブジェクトを作成する
-                Graphics g = Graphics.FromImage(canvas);
-
-                //Penオブジェクトの作成(幅1の黒色)
-                Pen p = new Pen(Color.Black, 1);
-                //長方形を描く
-                int size_x = Mask_address[2] - Mask_address[0];
-                int size_y = Mask_address[3] - Mask_address[1];
-                if (size_x > 0 && size_y > 0)
-                {
-                    g.FillRectangle(brush, Mask_address[0], Mask_address[1], size_x, size_y);
-                }
-                else if (size_x < 0 && size_y < 0)
-                {
-                    g.FillRectangle(brush, Mask_address[2], Mask_address[3], -size_x, -size_y);
-                }
-                //リソースを解放する
-                p.Dispose();
-                g.Dispose();
-
-                buttonDrowMask.Enabled = true;
-                FlagMask = 0;
-
-                fillOutOfCanvas();
-            }
-            else if (FlagMask == 3)
-            {
-                Mask_address[0] = e.Location.X;//配列の0番にクリックした座標を入れる
-                Mask_address[1] = e.Location.Y;//配列の1番にクリックした座標を入れる
-                FlagMask = 4;
-
-                //ImageオブジェクトのGraphicsオブジェクトを作成する
-                Graphics g = Graphics.FromImage(canvas);
-
-                //Penオブジェクトの作成(幅1の黒色)
-                Pen p = new Pen(color, 1);
-                g.DrawRectangle(p, Mask_address[0], Mask_address[1], 1, 1);
-                g.Dispose();
-            }
-            else if (FlagMask == 4)
-            {
-                Mask_address[2] = e.Location.X;//配列の2番に現在の座標を入れる
-                Mask_address[3] = e.Location.Y;//配列の3番に現在の座標を入れる
-
-                if (Mask_address[0] > Mask_address[2]) swap_address(ref Mask_address[0], ref Mask_address[2]);
-                if (Mask_address[1] > Mask_address[3]) swap_address(ref Mask_address[1], ref Mask_address[3]);
-
-                //ImageオブジェクトのGraphicsオブジェクトを作成する
-                Graphics g = Graphics.FromImage(canvas);
-
-                //Penオブジェクトの作成(幅** Color)
-                Pen p = new Pen(color, (float)numericUpDownLineWidth.Value);
-                //長方形を描く
-                int size_x = Mask_address[2] - Mask_address[0];
-                int size_y = Mask_address[3] - Mask_address[1];
-                if (size_x > 0 && size_y > 0)
-                {
-                    g.DrawRectangle(p, Mask_address[0], Mask_address[1], size_x, size_y);
-
-                }
-                else if (size_x < 0 && size_y < 0)
-                {
-                    g.FillRectangle(brush, Mask_address[2], Mask_address[3], -size_x, -size_y);
-                }
-                //リソースを解放する
-                p.Dispose();
-                g.Dispose();
-
-                buttonSquereLine.Enabled = true;
-                FlagMask = 0;
-
-                fillOutOfCanvas();
-            }
+            FlagMask = 3;
+            buttonSquereLine.Enabled = false;
+            buttonDrowMask.Enabled = true;
         }
+
         private void swap_address(ref int a, ref int b)
         {
             int tmp;
             tmp = a;
             a = b;
             b = tmp;
-        }
-
-        private void buttonSquereLine_Click(object sender, EventArgs e)
-        {
-            storeCurrentImage();
-
-            FlagMask = 3;
-            buttonSquereLine.Enabled = false;
-            buttonDrowMask.Enabled = true;
         }
 
         private void buttonSnappingTool_Click(object sender, EventArgs e)
@@ -394,10 +273,12 @@ namespace 画像処理
 
         private void buttonTrimming_Click(object sender, EventArgs e)
         {
-            storeCurrentImage();
+            if (!storeCurrentImage()) return;
             Image img = pictureBox1.Image;
+            if (img == null) return;
+
             //ImageオブジェクトのGraphicsオブジェクトを作成する
-            Graphics g = Graphics.FromImage(canvas);
+            g = Graphics.FromImage(canvas);
 
             //切り取る部分の範囲を決定する。
             int up = (int)numericUpDownTrimUp.Value;
@@ -413,9 +294,6 @@ namespace 画像処理
             //画像の一部を描画する
             g.DrawImage(img, desRect, srcRect, GraphicsUnit.Pixel);
 
-            //Graphicsオブジェクトのリソースを解放する
-            g.Dispose();
-
             fillOutOfCanvas();
         }
 
@@ -430,6 +308,109 @@ namespace 画像処理
                 textBoxFileName.Text = ofd.FileName;
                 PreviewDrowPicture();
             }
+        }
+
+        Point startPoint;
+        Point endPoint;
+
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (!storeCurrentImage()) return;
+
+            startPoint.X = e.Location.X;//配列の0番にクリックした座標を入れる
+            startPoint.Y = e.Location.Y;//配列の1番にクリックした座標を入れる
+        }
+
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            SolidBrush brush = new SolidBrush(Color.FromArgb(100, 200, 0, 00));
+            if (radioButtonDrowMask_Red.Checked) brush.Color = Color.FromArgb(255, 0, 0);
+            else if (radioButtonDrowMask_Yellow.Checked) brush.Color = Color.FromArgb(255, 255, 0);
+            else if (radioButtonDrowMask_Green.Checked) brush.Color = Color.FromArgb(0, 255, 0);
+            else if (radioButtonDrowMask_Blue.Checked) brush.Color = Color.FromArgb(0, 0, 255);
+            else brush.Color = Color.FromArgb(0, 0, 0);
+
+            Color color;
+            if (radioButtonSqLine_Red.Checked) color = Color.FromArgb(255, 0, 0);
+            else if (radioButtonSqLine_Yellow.Checked) color = Color.FromArgb(255, 255, 0);
+            else if (radioButtonSqLine_Green.Checked) color = Color.FromArgb(0, 255, 0);
+            else if (radioButtonSqLine_Blue.Checked) color = Color.FromArgb(0, 0, 255);
+            else color = Color.FromArgb(0, 0, 0);
+
+            if (FlagMask == 3) //Line
+            {
+                //ImageオブジェクトのGraphicsオブジェクトを作成する
+                g = Graphics.FromImage(canvas);
+
+                // マウスの左ボタンが押されている場合のみ処理
+                if ((Control.MouseButtons & MouseButtons.Left) == MouseButtons.Left)
+                {
+                    // 座標を取得
+                    endPoint.X = e.Location.X;
+                    endPoint.Y = e.Location.Y;
+
+                    // 描画
+                    Point p0 = new Point(startPoint.X, startPoint.Y);
+                    Point p1 = new Point(endPoint.X, startPoint.Y);
+                    Point p2 = new Point(startPoint.X, endPoint.Y);
+                    Point p3 = new Point(endPoint.X, endPoint.Y);
+
+                    int size_x = Math.Abs(startPoint.X - endPoint.X);
+                    int size_y = Math.Abs(startPoint.Y - endPoint.Y);
+
+                    // 先にバックアップしていた画像で塗り潰す
+                    if (backupImage != null) g.DrawImage(backupImage, 0, 0);
+
+                    //Penオブジェクトの作成(幅1の黒色)
+                    Pen p = new Pen(color, (float)numericUpDownLineWidth.Value);
+
+                    g.DrawRectangle(p, Math.Min(startPoint.X, endPoint.X), Math.Min(startPoint.Y, endPoint.Y), size_x, size_y);
+                    pictureBox1.Image = canvas;
+
+                }
+
+            }
+            else if (FlagMask == 1) //Mask
+            {
+                //ImageオブジェクトのGraphicsオブジェクトを作成する
+                g = Graphics.FromImage(canvas);
+
+                // マウスの左ボタンが押されている場合のみ処理
+                if ((Control.MouseButtons & MouseButtons.Left) == MouseButtons.Left)
+                {
+                    // 座標を取得
+                    endPoint.X = e.Location.X;
+                    endPoint.Y = e.Location.Y;
+
+                    // 描画
+                    Point p0 = new Point(startPoint.X, startPoint.Y);
+                    Point p1 = new Point(endPoint.X, startPoint.Y);
+                    Point p2 = new Point(startPoint.X, endPoint.Y);
+                    Point p3 = new Point(endPoint.X, endPoint.Y);
+
+                    int size_x = Math.Abs(startPoint.X - endPoint.X);
+                    int size_y = Math.Abs(startPoint.Y - endPoint.Y);
+
+                    // 先にバックアップしていた画像で塗り潰す
+                    if (backupImage != null) g.DrawImage(backupImage, 0, 0);
+
+                    g.FillRectangle(brush, Math.Min(startPoint.X, endPoint.X), Math.Min(startPoint.Y, endPoint.Y), size_x, size_y);
+                    pictureBox1.Image = canvas;
+                }
+            }
+        }
+
+        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void buttonTrimingValueReset_Click(object sender, EventArgs e)
+        {
+            numericUpDownTrimUp.Value = 0;
+            numericUpDownTrimDown.Value = 0;
+            numericUpDownTrimRight.Value = 0;
+            numericUpDownTrimLeft.Value = 0;
         }
     }
 }
