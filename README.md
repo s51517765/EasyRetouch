@@ -40,4 +40,7 @@ This software is released under the MIT License, see LICENSE.
 ※日本語のプロジェクト名にしてしまったため文字化けしてビルド失敗する場合があります
 
 
-### このアプリは https://github.com/moko-vfx/TenpuGazoMaker のコードを一部使用させていただいています。
+### このアプリは 以下のコードを一部使用させていただいています。
+・ https://github.com/moko-vfx/TenpuGazoMaker 
+
+・ https://dobon.net/
