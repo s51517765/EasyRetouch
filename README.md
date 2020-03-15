@@ -19,7 +19,11 @@
 
 といったことが出来ます。
 
-<img src="https://github.com/s51517765/EasyRetouch/blob/master/1.gif">
+<img src="https://github.com/s51517765/EasyRetouch/blob/master/DemoMovie.gif">
+
+## 開発環境が無い方 (For User)
+
+Release フォルダの実行ファイルをダウンロードして利用ください。 Only for Windows.
 
 ## 動作要件 (Requirements)
 
