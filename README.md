@@ -37,10 +37,13 @@ https://s51517765.hatenadiary.jp/entry/2020/02/25/073000
 
 This software is released under the MIT License, see LICENSE.
 
-※日本語のプロジェクト名にしてしまったため文字化けしてビルド失敗する場合があります
-
-
 ### このアプリは 以下のコードを一部使用させていただいています。
 ・ https://github.com/moko-vfx/TenpuGazoMaker 
 
 ・ https://dobon.net/
+
+### 日本語のプロジェクト名にしてしまったため文字化けしてビルド失敗する場合があります
+
+ビルドできない場合は解凍ソフトを文字コード変換に対応したものに変更してみてください。
+
+https://forest.watch.impress.co.jp/library/software/explzh/
