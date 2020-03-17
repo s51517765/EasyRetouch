@@ -64,6 +64,7 @@
             this.labelStartMsg3 = new System.Windows.Forms.Label();
             this.buttonUndo = new System.Windows.Forms.Button();
             this.groupBoxTrimming = new System.Windows.Forms.GroupBox();
+            this.buttonTrimingValueReset = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -76,7 +77,6 @@
             this.buttonFileOpen = new System.Windows.Forms.Button();
             this.buttonSnappingTool = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.buttonTrimingValueReset = new System.Windows.Forms.Button();
             this.groupBoxDrowEdge.SuspendLayout();
             this.groupBoxDrowMask.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -480,6 +480,16 @@
             this.groupBoxTrimming.TabStop = false;
             this.groupBoxTrimming.Text = "Trimming";
             // 
+            // buttonTrimingValueReset
+            // 
+            this.buttonTrimingValueReset.Location = new System.Drawing.Point(119, 156);
+            this.buttonTrimingValueReset.Name = "buttonTrimingValueReset";
+            this.buttonTrimingValueReset.Size = new System.Drawing.Size(75, 28);
+            this.buttonTrimingValueReset.TabIndex = 25;
+            this.buttonTrimingValueReset.Text = "Reaset";
+            this.buttonTrimingValueReset.UseVisualStyleBackColor = true;
+            this.buttonTrimingValueReset.Click += new System.EventHandler(this.buttonTrimingValueReset_Click);
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -591,16 +601,6 @@
             this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
             this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
             // 
-            // buttonTrimingValueReset
-            // 
-            this.buttonTrimingValueReset.Location = new System.Drawing.Point(119, 156);
-            this.buttonTrimingValueReset.Name = "buttonTrimingValueReset";
-            this.buttonTrimingValueReset.Size = new System.Drawing.Size(75, 28);
-            this.buttonTrimingValueReset.TabIndex = 25;
-            this.buttonTrimingValueReset.Text = "Reaset";
-            this.buttonTrimingValueReset.UseVisualStyleBackColor = true;
-            this.buttonTrimingValueReset.Click += new System.EventHandler(this.buttonTrimingValueReset_Click);
-            // 
             // Form1
             // 
             this.AllowDrop = true;
@@ -629,7 +629,7 @@
             this.MaximumSize = new System.Drawing.Size(1490, 884);
             this.MinimumSize = new System.Drawing.Size(1290, 884);
             this.Name = "Form1";
-            this.Text = "Easy Retouch      *Ver.2020-03-15";
+            this.Text = "Easy Retouch      *Ver.2020-03-17";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form1_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form1_DragEnter);
