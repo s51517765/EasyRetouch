@@ -246,14 +246,6 @@ namespace 画像処理
             buttonDrowMask.Enabled = true;
         }
 
-        private void swap_address(ref int a, ref int b)
-        {
-            int tmp;
-            tmp = a;
-            a = b;
-            b = tmp;
-        }
-
         private void buttonSnappingTool_Click(object sender, EventArgs e)
         {
             try
@@ -349,12 +341,6 @@ namespace 画像処理
                     endPoint.X = e.Location.X;
                     endPoint.Y = e.Location.Y;
 
-                    // 描画
-                    Point p0 = new Point(startPoint.X, startPoint.Y);
-                    Point p1 = new Point(endPoint.X, startPoint.Y);
-                    Point p2 = new Point(startPoint.X, endPoint.Y);
-                    Point p3 = new Point(endPoint.X, endPoint.Y);
-
                     int size_x = Math.Abs(startPoint.X - endPoint.X);
                     int size_y = Math.Abs(startPoint.Y - endPoint.Y);
 
@@ -366,7 +352,6 @@ namespace 画像処理
 
                     g.DrawRectangle(p, Math.Min(startPoint.X, endPoint.X), Math.Min(startPoint.Y, endPoint.Y), size_x, size_y);
                     pictureBox1.Image = canvas;
-
                 }
 
             }
@@ -381,12 +366,6 @@ namespace 画像処理
                     // 座標を取得
                     endPoint.X = e.Location.X;
                     endPoint.Y = e.Location.Y;
-
-                    // 描画
-                    Point p0 = new Point(startPoint.X, startPoint.Y);
-                    Point p1 = new Point(endPoint.X, startPoint.Y);
-                    Point p2 = new Point(startPoint.X, endPoint.Y);
-                    Point p3 = new Point(endPoint.X, endPoint.Y);
 
                     int size_x = Math.Abs(startPoint.X - endPoint.X);
                     int size_y = Math.Abs(startPoint.Y - endPoint.Y);
