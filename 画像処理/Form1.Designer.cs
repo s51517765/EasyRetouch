@@ -74,6 +74,15 @@
             this.numericUpDownTrimDown = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownTrimUp = new System.Windows.Forms.NumericUpDown();
             this.buttonTrimming = new System.Windows.Forms.Button();
+            this.buttonBlur = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.numericUpDownBlurSize = new System.Windows.Forms.NumericUpDown();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.buttonRotate270deg = new System.Windows.Forms.Button();
+            this.buttonFlipX = new System.Windows.Forms.Button();
+            this.buttonRotate90deg = new System.Windows.Forms.Button();
+            this.buttonFlipY = new System.Windows.Forms.Button();
             this.buttonFileOpen = new System.Windows.Forms.Button();
             this.buttonSnappingTool = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -86,6 +95,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTrimRight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTrimDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTrimUp)).BeginInit();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBlurSize)).BeginInit();
+            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -98,8 +110,9 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Font = new System.Drawing.Font("MS UI Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonSave.Location = new System.Drawing.Point(1054, 743);
+            this.buttonSave.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonSave.ForeColor = System.Drawing.Color.Blue;
+            this.buttonSave.Location = new System.Drawing.Point(1199, 843);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(169, 79);
             this.buttonSave.TabIndex = 3;
@@ -146,7 +159,7 @@
             this.groupBoxDrowEdge.Controls.Add(this.radioButtonDrowEdge_Yellow);
             this.groupBoxDrowEdge.Controls.Add(this.radioButtonDrowEdge_Red);
             this.groupBoxDrowEdge.Controls.Add(this.buttonDrowEdgeLine);
-            this.groupBoxDrowEdge.Location = new System.Drawing.Point(1051, 90);
+            this.groupBoxDrowEdge.Location = new System.Drawing.Point(990, 90);
             this.groupBoxDrowEdge.Name = "groupBoxDrowEdge";
             this.groupBoxDrowEdge.Size = new System.Drawing.Size(200, 147);
             this.groupBoxDrowEdge.TabIndex = 7;
@@ -213,7 +226,7 @@
             this.groupBoxDrowMask.Controls.Add(this.buttonDrowMask);
             this.groupBoxDrowMask.Controls.Add(this.radioButtonDrowMask_Yellow);
             this.groupBoxDrowMask.Controls.Add(this.radioButtonDrowMask_Red);
-            this.groupBoxDrowMask.Location = new System.Drawing.Point(1051, 245);
+            this.groupBoxDrowMask.Location = new System.Drawing.Point(990, 245);
             this.groupBoxDrowMask.Name = "groupBoxDrowMask";
             this.groupBoxDrowMask.Size = new System.Drawing.Size(200, 151);
             this.groupBoxDrowMask.TabIndex = 8;
@@ -274,7 +287,7 @@
             // 
             // textBoxSuffix
             // 
-            this.textBoxSuffix.Location = new System.Drawing.Point(1053, 703);
+            this.textBoxSuffix.Location = new System.Drawing.Point(1198, 803);
             this.textBoxSuffix.Name = "textBoxSuffix";
             this.textBoxSuffix.Size = new System.Drawing.Size(100, 22);
             this.textBoxSuffix.TabIndex = 9;
@@ -283,7 +296,7 @@
             // labelSuffix
             // 
             this.labelSuffix.AutoSize = true;
-            this.labelSuffix.Location = new System.Drawing.Point(1056, 684);
+            this.labelSuffix.Location = new System.Drawing.Point(1200, 784);
             this.labelSuffix.Name = "labelSuffix";
             this.labelSuffix.Size = new System.Drawing.Size(44, 15);
             this.labelSuffix.TabIndex = 10;
@@ -295,7 +308,7 @@
             this.labelStartMsg1.BackColor = System.Drawing.Color.Gainsboro;
             this.labelStartMsg1.Font = new System.Drawing.Font("MS UI Gothic", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.labelStartMsg1.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.labelStartMsg1.Location = new System.Drawing.Point(64, 177);
+            this.labelStartMsg1.Location = new System.Drawing.Point(26, 177);
             this.labelStartMsg1.Name = "labelStartMsg1";
             this.labelStartMsg1.Size = new System.Drawing.Size(872, 60);
             this.labelStartMsg1.TabIndex = 11;
@@ -307,7 +320,7 @@
             this.labelStartMsg2.BackColor = System.Drawing.Color.Gainsboro;
             this.labelStartMsg2.Font = new System.Drawing.Font("MS UI Gothic", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.labelStartMsg2.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.labelStartMsg2.Location = new System.Drawing.Point(73, 349);
+            this.labelStartMsg2.Location = new System.Drawing.Point(35, 349);
             this.labelStartMsg2.Name = "labelStartMsg2";
             this.labelStartMsg2.Size = new System.Drawing.Size(641, 60);
             this.labelStartMsg2.TabIndex = 12;
@@ -323,7 +336,7 @@
             this.groupBox1.Controls.Add(this.buttonSquereLine);
             this.groupBox1.Controls.Add(this.radioButtonSqLine_Yellow);
             this.groupBox1.Controls.Add(this.radioButtonSqLine_Red);
-            this.groupBox1.Location = new System.Drawing.Point(1051, 405);
+            this.groupBox1.Location = new System.Drawing.Point(990, 405);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 192);
             this.groupBox1.TabIndex = 13;
@@ -417,7 +430,7 @@
             // buttonGetClipbord
             // 
             this.buttonGetClipbord.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonGetClipbord.Location = new System.Drawing.Point(1260, 12);
+            this.buttonGetClipbord.Location = new System.Drawing.Point(1186, 12);
             this.buttonGetClipbord.Name = "buttonGetClipbord";
             this.buttonGetClipbord.Size = new System.Drawing.Size(138, 48);
             this.buttonGetClipbord.TabIndex = 14;
@@ -431,7 +444,7 @@
             this.labelStartMsg4.BackColor = System.Drawing.Color.Gainsboro;
             this.labelStartMsg4.Font = new System.Drawing.Font("MS UI Gothic", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.labelStartMsg4.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.labelStartMsg4.Location = new System.Drawing.Point(73, 412);
+            this.labelStartMsg4.Location = new System.Drawing.Point(35, 412);
             this.labelStartMsg4.Name = "labelStartMsg4";
             this.labelStartMsg4.Size = new System.Drawing.Size(795, 60);
             this.labelStartMsg4.TabIndex = 15;
@@ -443,7 +456,7 @@
             this.labelStartMsg3.BackColor = System.Drawing.Color.Gainsboro;
             this.labelStartMsg3.Font = new System.Drawing.Font("MS UI Gothic", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.labelStartMsg3.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.labelStartMsg3.Location = new System.Drawing.Point(65, 242);
+            this.labelStartMsg3.Location = new System.Drawing.Point(27, 242);
             this.labelStartMsg3.Name = "labelStartMsg3";
             this.labelStartMsg3.Size = new System.Drawing.Size(877, 60);
             this.labelStartMsg3.TabIndex = 16;
@@ -453,7 +466,7 @@
             // 
             this.buttonUndo.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonUndo.ForeColor = System.Drawing.Color.Red;
-            this.buttonUndo.Location = new System.Drawing.Point(1160, 621);
+            this.buttonUndo.Location = new System.Drawing.Point(1305, 721);
             this.buttonUndo.Name = "buttonUndo";
             this.buttonUndo.Size = new System.Drawing.Size(87, 34);
             this.buttonUndo.TabIndex = 17;
@@ -473,7 +486,7 @@
             this.groupBoxTrimming.Controls.Add(this.numericUpDownTrimDown);
             this.groupBoxTrimming.Controls.Add(this.numericUpDownTrimUp);
             this.groupBoxTrimming.Controls.Add(this.buttonTrimming);
-            this.groupBoxTrimming.Location = new System.Drawing.Point(1260, 90);
+            this.groupBoxTrimming.Location = new System.Drawing.Point(1199, 90);
             this.groupBoxTrimming.Name = "groupBoxTrimming";
             this.groupBoxTrimming.Size = new System.Drawing.Size(200, 195);
             this.groupBoxTrimming.TabIndex = 8;
@@ -565,6 +578,116 @@
             this.buttonTrimming.UseVisualStyleBackColor = true;
             this.buttonTrimming.Click += new System.EventHandler(this.buttonTrimming_Click);
             // 
+            // buttonBlur
+            // 
+            this.buttonBlur.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonBlur.Location = new System.Drawing.Point(6, 41);
+            this.buttonBlur.Name = "buttonBlur";
+            this.buttonBlur.Size = new System.Drawing.Size(75, 100);
+            this.buttonBlur.TabIndex = 22;
+            this.buttonBlur.Text = "Blur";
+            this.buttonBlur.UseVisualStyleBackColor = true;
+            this.buttonBlur.Click += new System.EventHandler(this.buttonBlur_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.numericUpDownBlurSize);
+            this.groupBox2.Controls.Add(this.buttonBlur);
+            this.groupBox2.Location = new System.Drawing.Point(1199, 291);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(201, 185);
+            this.groupBox2.TabIndex = 23;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Blur";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(75, 151);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(34, 15);
+            this.label7.TabIndex = 26;
+            this.label7.Text = "Size";
+            // 
+            // numericUpDownBlurSize
+            // 
+            this.numericUpDownBlurSize.Location = new System.Drawing.Point(119, 148);
+            this.numericUpDownBlurSize.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.numericUpDownBlurSize.Name = "numericUpDownBlurSize";
+            this.numericUpDownBlurSize.Size = new System.Drawing.Size(68, 22);
+            this.numericUpDownBlurSize.TabIndex = 26;
+            this.numericUpDownBlurSize.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.buttonRotate270deg);
+            this.groupBox3.Controls.Add(this.buttonFlipX);
+            this.groupBox3.Controls.Add(this.buttonRotate90deg);
+            this.groupBox3.Controls.Add(this.buttonFlipY);
+            this.groupBox3.Location = new System.Drawing.Point(1199, 482);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(201, 185);
+            this.groupBox3.TabIndex = 29;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Rotation";
+            // 
+            // buttonRotate270deg
+            // 
+            this.buttonRotate270deg.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonRotate270deg.BackgroundImage")));
+            this.buttonRotate270deg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonRotate270deg.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonRotate270deg.Location = new System.Drawing.Point(112, 21);
+            this.buttonRotate270deg.Name = "buttonRotate270deg";
+            this.buttonRotate270deg.Size = new System.Drawing.Size(75, 62);
+            this.buttonRotate270deg.TabIndex = 27;
+            this.buttonRotate270deg.UseVisualStyleBackColor = true;
+            this.buttonRotate270deg.Click += new System.EventHandler(this.buttonRotate270deg_Click);
+            // 
+            // buttonFlipX
+            // 
+            this.buttonFlipX.BackgroundImage = global::画像処理.Properties.Resources.RightLeft1;
+            this.buttonFlipX.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonFlipX.Font = new System.Drawing.Font("MS UI Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonFlipX.Location = new System.Drawing.Point(112, 101);
+            this.buttonFlipX.Name = "buttonFlipX";
+            this.buttonFlipX.Size = new System.Drawing.Size(75, 62);
+            this.buttonFlipX.TabIndex = 28;
+            this.buttonFlipX.UseVisualStyleBackColor = true;
+            this.buttonFlipX.Click += new System.EventHandler(this.buttonFlipX_Click);
+            // 
+            // buttonRotate90deg
+            // 
+            this.buttonRotate90deg.BackgroundImage = global::画像処理.Properties.Resources.RotateRight1;
+            this.buttonRotate90deg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonRotate90deg.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonRotate90deg.Location = new System.Drawing.Point(20, 22);
+            this.buttonRotate90deg.Name = "buttonRotate90deg";
+            this.buttonRotate90deg.Size = new System.Drawing.Size(75, 62);
+            this.buttonRotate90deg.TabIndex = 26;
+            this.buttonRotate90deg.UseVisualStyleBackColor = true;
+            this.buttonRotate90deg.Click += new System.EventHandler(this.buttonRotate90deg_Click);
+            // 
+            // buttonFlipY
+            // 
+            this.buttonFlipY.BackgroundImage = global::画像処理.Properties.Resources.upDown2;
+            this.buttonFlipY.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonFlipY.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonFlipY.Location = new System.Drawing.Point(20, 101);
+            this.buttonFlipY.Name = "buttonFlipY";
+            this.buttonFlipY.Size = new System.Drawing.Size(75, 62);
+            this.buttonFlipY.TabIndex = 25;
+            this.buttonFlipY.UseVisualStyleBackColor = true;
+            this.buttonFlipY.Click += new System.EventHandler(this.buttonFlipY_Click);
+            // 
             // buttonFileOpen
             // 
             this.buttonFileOpen.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
@@ -578,9 +701,10 @@
             // 
             // buttonSnappingTool
             // 
+            this.buttonSnappingTool.BackgroundImage = global::画像処理.Properties.Resources.snapping1;
+            this.buttonSnappingTool.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonSnappingTool.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonSnappingTool.Image = global::画像処理.Properties.Resources.windows_accessory_snipping_tool00;
-            this.buttonSnappingTool.Location = new System.Drawing.Point(1406, 12);
+            this.buttonSnappingTool.Location = new System.Drawing.Point(1332, 12);
             this.buttonSnappingTool.Name = "buttonSnappingTool";
             this.buttonSnappingTool.Size = new System.Drawing.Size(55, 48);
             this.buttonSnappingTool.TabIndex = 20;
@@ -591,9 +715,9 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Gainsboro;
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(14, 63);
+            this.pictureBox1.Location = new System.Drawing.Point(14, 48);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1000, 750);
+            this.pictureBox1.Size = new System.Drawing.Size(900, 900);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
@@ -606,7 +730,9 @@
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1472, 837);
+            this.ClientSize = new System.Drawing.Size(1412, 952);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.buttonFileOpen);
             this.Controls.Add(this.groupBoxTrimming);
             this.Controls.Add(this.buttonSnappingTool);
@@ -626,10 +752,11 @@
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.textBoxFileName);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(1490, 884);
-            this.MinimumSize = new System.Drawing.Size(1290, 884);
+            this.MaximumSize = new System.Drawing.Size(1430, 999);
+            this.MinimumSize = new System.Drawing.Size(1430, 999);
             this.Name = "Form1";
-            this.Text = "Easy Retouch      *Ver.2020-04-05";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.Text = "Easy Retouch      *Ver.2020-07-28";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form1_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form1_DragEnter);
@@ -646,6 +773,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTrimRight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTrimDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTrimUp)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBlurSize)).EndInit();
+            this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -702,6 +833,15 @@
         private System.Windows.Forms.Button buttonTrimming;
         private System.Windows.Forms.Button buttonFileOpen;
         private System.Windows.Forms.Button buttonTrimingValueReset;
+        private System.Windows.Forms.Button buttonBlur;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.NumericUpDown numericUpDownBlurSize;
+        private System.Windows.Forms.Button buttonFlipY;
+        private System.Windows.Forms.Button buttonRotate90deg;
+        private System.Windows.Forms.Button buttonRotate270deg;
+        private System.Windows.Forms.Button buttonFlipX;
+        private System.Windows.Forms.GroupBox groupBox3;
     }
 }
 

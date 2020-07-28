@@ -61,19 +61,19 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -85,6 +85,48 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="2038bcf826399abd758d7e993a69a50b_xxo.ico" />
+    <None Include="Resources\snapping1.png" />
+    <None Include="Resources\snapping.png" />
+    <None Include="Resources\windows-accessory-snipping-tool00.png" />
+    <None Include="Resources\RightLeft1.png" />
+    <None Include="Resources\upDown7.png" />
+    <None Include="Resources\RotateRight9.png" />
+    <None Include="Resources\upDown6.png" />
+    <None Include="Resources\upDown5.png" />
+    <None Include="Resources\upDown4.png" />
+    <None Include="Resources\upDown3.png" />
+    <None Include="Resources\RotateRight8.png" />
+    <None Include="Resources\RotateLeft7.png" />
+    <None Include="Resources\RotateLeft6.png" />
+    <None Include="Resources\RotateLeft5.png" />
+    <None Include="Resources\upDown2.png" />
+    <None Include="Resources\RightLeft.png" />
+    <None Include="Resources\upDown1.png" />
+    <None Include="Resources\downUp21.png" />
+    <None Include="Resources\downUp2.png" />
+    <None Include="Resources\downUp12.png" />
+    <None Include="Resources\downUp11.png" />
+    <None Include="Resources\downUp1.png" />
+    <None Include="Resources\upDown.png" />
+    <None Include="Resources\RotateLeft4.png" />
+    <None Include="Resources\RotateLeft3.png" />
+    <None Include="Resources\RotateRight7.png" />
+    <None Include="Resources\RotateLeft2.png" />
+    <None Include="Resources\RotateLeft1.png" />
+    <None Include="Resources\RotateRight6.png" />
+    <None Include="Resources\RotateRight5.png" />
+    <None Include="Resources\RotateLeft.png" />
+    <None Include="Resources\RotateRight4.png" />
+    <None Include="Resources\RotateRight3.png" />
+    <None Include="Resources\RotateRight11.jpg" />
+    <None Include="Resources\RotateRight2.jpg" />
+    <None Include="Resources\RotateLeft.jpg" />
+    <None Include="Resources\RotateRight1.jpg" />
+    <None Include="Resources\RotateRight.jpg" />
+    <None Include="Resources\RotateRight2.png" />
+    <None Include="Resources\RotateRight11.png" />
+    <None Include="Resources\RotateRight1.png" />
+    <None Include="Resources\RotateRight.png" />
     <None Include="Resources\フォルダ.ico" />
     <None Include="Resources\windows-accessory-snipping-tool00.ico" />
   </ItemGroup>
