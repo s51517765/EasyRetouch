@@ -24,6 +24,7 @@
 といったことが出来ます。
 
 <img src="https://github.com/s51517765/EasyRetouch/blob/master/DemoMovie.gif">
+<img src="https://github.com/s51517765/EasyRetouch/blob/master/DemoMovie2.gif">
 
 ## 開発環境が無い方 (For User)
 
