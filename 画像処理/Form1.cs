@@ -448,9 +448,9 @@ namespace 画像処理
                         {
                             for (int x1 = 0; x1 < blur_size; x1++)
                             {
-                                red += canvas.GetPixel(Math.Min(startPoint.X, endPoint.X) + x, Math.Min(startPoint.Y, endPoint.Y) + y).R;
-                                green += canvas.GetPixel(Math.Min(startPoint.X, endPoint.X) + x, Math.Min(startPoint.Y, endPoint.Y) + y).G;
-                                blue += canvas.GetPixel(Math.Min(startPoint.X, endPoint.X) + x, Math.Min(startPoint.Y, endPoint.Y) + y).B;
+                                red += canvas.GetPixel(Math.Min(startPoint.X, endPoint.X) + x + x1, Math.Min(startPoint.Y, endPoint.Y) + y + y1).R;
+                                green += canvas.GetPixel(Math.Min(startPoint.X, endPoint.X) + x + x1, Math.Min(startPoint.Y, endPoint.Y) + y + y1).G;
+                                blue += canvas.GetPixel(Math.Min(startPoint.X, endPoint.X) + x + x1, Math.Min(startPoint.Y, endPoint.Y) + y + y1).B;
                             }
                         }
                         red /= (int)Math.Pow(blur_size, 2);
