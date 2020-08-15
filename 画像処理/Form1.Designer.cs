@@ -86,6 +86,7 @@
             this.buttonFileOpen = new System.Windows.Forms.Button();
             this.buttonSnappingTool = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.buttonSetImage2Clipboard = new System.Windows.Forms.Button();
             this.groupBoxDrowEdge.SuspendLayout();
             this.groupBoxDrowMask.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -725,12 +726,25 @@
             this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
             this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
             // 
+            // buttonSetImage2Clipboard
+            // 
+            this.buttonSetImage2Clipboard.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonSetImage2Clipboard.ForeColor = System.Drawing.Color.Blue;
+            this.buttonSetImage2Clipboard.Location = new System.Drawing.Point(1025, 859);
+            this.buttonSetImage2Clipboard.Name = "buttonSetImage2Clipboard";
+            this.buttonSetImage2Clipboard.Size = new System.Drawing.Size(138, 48);
+            this.buttonSetImage2Clipboard.TabIndex = 30;
+            this.buttonSetImage2Clipboard.Text = " Set imge to Clipbord";
+            this.buttonSetImage2Clipboard.UseVisualStyleBackColor = true;
+            this.buttonSetImage2Clipboard.Click += new System.EventHandler(this.buttonSetImage2Clipboard_Click);
+            // 
             // Form1
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1412, 952);
+            this.Controls.Add(this.buttonSetImage2Clipboard);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.buttonFileOpen);
@@ -756,7 +770,7 @@
             this.MinimumSize = new System.Drawing.Size(1430, 999);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Easy Retouch      *Ver.2020-08-09";
+            this.Text = "Easy Retouch      *Ver.2020-08-15";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form1_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form1_DragEnter);
@@ -842,6 +856,7 @@
         private System.Windows.Forms.Button buttonRotate270deg;
         private System.Windows.Forms.Button buttonFlipX;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button buttonSetImage2Clipboard;
     }
 }
 

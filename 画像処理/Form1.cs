@@ -551,5 +551,18 @@ namespace 画像処理
 
             fillOutOfCanvas();
         }
+
+        private void buttonSetImage2Clipboard_Click(object sender, EventArgs e)
+        {
+            //画像を取得
+            Bitmap bmp = new Bitmap(pictureBox1.Image );
+            // 現在のサイズにトリミング
+            Rectangle Rect = new Rectangle(0, 0, FinalPictureWidth, FinalPictureHeight);
+            Bitmap NewBmp = bmp.Clone(Rect, bmp.PixelFormat);
+
+            Clipboard.SetImage(NewBmp);
+            bmp.Dispose();
+            NewBmp.Dispose();
+        }
     }
 }
