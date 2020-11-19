@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.IO;
 
 namespace 画像処理
 
@@ -555,7 +556,7 @@ namespace 画像処理
         private void buttonSetImage2Clipboard_Click(object sender, EventArgs e)
         {
             //画像を取得
-            Bitmap bmp = new Bitmap(pictureBox1.Image );
+            Bitmap bmp = new Bitmap(pictureBox1.Image);
             // 現在のサイズにトリミング
             Rectangle Rect = new Rectangle(0, 0, FinalPictureWidth, FinalPictureHeight);
             Bitmap NewBmp = bmp.Clone(Rect, bmp.PixelFormat);
@@ -563,6 +564,15 @@ namespace 画像処理
             Clipboard.SetImage(NewBmp);
             bmp.Dispose();
             NewBmp.Dispose();
+        }
+
+        private void textBoxFileName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData != Keys.Enter) return;
+            if (File.Exists(textBoxFileName.Text))
+            {
+                PreviewDrowPicture();
+            }
         }
     }
 }
