@@ -438,9 +438,13 @@ namespace 画像処理
 
                 int size_x = Math.Abs(startPoint.X - endPoint.X);
                 int size_y = Math.Abs(startPoint.Y - endPoint.Y);
-                for (int x = 0; x < size_x - blur_size; x += blur_size)
+                int tmp = Math.Min(size_x, size_y);
+                blur_size = Math.Min(tmp, blur_size);
+                if (blur_size == 0) return;
+
+                for (int x = 0; x <= size_x - blur_size / 2; x += blur_size)
                 {
-                    for (int y = 0; y < size_y - blur_size; y += blur_size)
+                    for (int y = 0; y <= size_y - blur_size / 2; y += blur_size)
                     {
                         int red = 0;
                         int green = 0;
@@ -449,9 +453,9 @@ namespace 画像処理
                         {
                             for (int x1 = 0; x1 < blur_size; x1++)
                             {
-                                red += canvas.GetPixel(Math.Min(startPoint.X, endPoint.X) + x + x1, Math.Min(startPoint.Y, endPoint.Y) + y + y1).R;
-                                green += canvas.GetPixel(Math.Min(startPoint.X, endPoint.X) + x + x1, Math.Min(startPoint.Y, endPoint.Y) + y + y1).G;
-                                blue += canvas.GetPixel(Math.Min(startPoint.X, endPoint.X) + x + x1, Math.Min(startPoint.Y, endPoint.Y) + y + y1).B;
+                                red += canvas.GetPixel(Math.Max(Math.Min(startPoint.X, endPoint.X) + x, 0) + x1, Math.Max(Math.Min(startPoint.Y, endPoint.Y) + y, 0) + y1).R;
+                                green += canvas.GetPixel(Math.Max(Math.Min(startPoint.X, endPoint.X) + x, 0) + x1, Math.Max(Math.Min(startPoint.Y, endPoint.Y) + y, 0) + y1).G;
+                                blue += canvas.GetPixel(Math.Max(Math.Min(startPoint.X, endPoint.X) + x, 0) + x1, Math.Max(Math.Min(startPoint.Y, endPoint.Y) + y, 0) + y1).B;
                             }
                         }
                         red /= (int)Math.Pow(blur_size, 2);
@@ -460,7 +464,7 @@ namespace 画像処理
                         SolidBrush brush = new SolidBrush(Color.FromArgb(100, red, green, blue));
 
                         brush.Color = Color.FromArgb(red, green, blue);
-                        g.FillRectangle(brush, Math.Min(startPoint.X, endPoint.X) + x, Math.Min(startPoint.Y, endPoint.Y) + y, blur_size, blur_size);
+                        g.FillRectangle(brush, Math.Min(startPoint.X, endPoint.X) + x, Math.Min(startPoint.Y, endPoint.Y) + y, Math.Min(blur_size, Math.Max(startPoint.X, endPoint.X) - x), Math.Min(blur_size, Math.Max(startPoint.Y, endPoint.Y) - y));
                     }
                 }
                 pictureBox1.Image = canvas;

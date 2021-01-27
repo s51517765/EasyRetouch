@@ -770,7 +770,7 @@
             this.MinimumSize = new System.Drawing.Size(1430, 999);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Easy Retouch      *Ver.2020-11-19";
+            this.Text = "Easy Retouch      *Ver.2021-01-27";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form1_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form1_DragEnter);
