@@ -28,25 +28,29 @@ namespace 画像処理
         }
 
         //using System.Drawing;
-        const int pictureBoxWidth = 900;
-        const int pictureBoxHeight = 900;
+        const int pictureBoxWidth = 3600;
+        const int pictureBoxHeight = 3600;
+        const int pictureBoxPreviewRate = 4;
         int FinalPictureWidth = pictureBoxWidth;
         int FinalPictureHeight = pictureBoxHeight;
         int previousPictureWidth;
         int previousPictureHeight;
         float reSizeRate;
 
-        //描画先とするImageオブジェクトを作成する
+        //出力画像用Imageオブジェクトを作成する
         Bitmap canvas = new Bitmap(pictureBoxWidth, pictureBoxHeight);
         Graphics g;
         Bitmap backupImage;
+        //描画先とするImageオブジェクトを作成する
+        Bitmap canvas2 = new Bitmap(pictureBoxWidth / pictureBoxPreviewRate, pictureBoxHeight / pictureBoxPreviewRate);
+        //  Graphics g2;
 
         private bool storeCurrentImage()
         {
             try
             {
                 // 画像のバックアップを取得
-                backupImage = new Bitmap(pictureBox1.Image);
+                backupImage = new Bitmap(canvas);
                 previousPictureWidth = FinalPictureWidth;
                 previousPictureHeight = FinalPictureHeight;
                 return true;
@@ -68,7 +72,8 @@ namespace 画像処理
             {
                 // 先にバックアップしていた画像で塗り潰す
                 g.DrawImage(backupImage, 0, 0);
-                pictureBox1.Image = canvas;
+                canvas2 = new Bitmap(canvas, pictureBoxWidth, pictureBoxHeight);
+                pictureBox1.Image = canvas2;
             }
             catch
             {
@@ -94,7 +99,7 @@ namespace 画像処理
                     img = defImg;
                 }
                 //リサイズ率が小さいほう
-                reSizeRate = ((float)pictureBox1.Width / (float)img.Width) < ((float)pictureBox1.Height / (float)img.Height) ? (float)pictureBox1.Width / (float)img.Width : (float)pictureBox1.Height / (float)img.Height;
+                reSizeRate = ((float)canvas.Width / (float)img.Width) < ((float)canvas.Height / (float)img.Height) ? (float)canvas.Width / (float)img.Width : (float)canvas.Height / (float)img.Height;
 
                 if (reSizeRate > 1) reSizeRate = 1; //小さい画像は拡大しない
                 //画像をcanvasの座標(0, 0)の位置に描画する
@@ -128,7 +133,9 @@ namespace 画像処理
             g.FillRectangle(brush, FinalPictureWidth, 0, pictureBoxWidth, pictureBoxHeight);
             g.FillRectangle(brush, 0, FinalPictureHeight, pictureBoxWidth, pictureBoxHeight);
 
-            pictureBox1.Image = canvas;
+            canvas2 = new Bitmap(canvas, pictureBoxWidth, pictureBoxHeight);
+
+            pictureBox1.Image = canvas2;
         }
 
         private void buttonGetClipbord_Click(object sender, EventArgs e)
@@ -200,8 +207,8 @@ namespace 画像処理
                 {
                     suffix_no += 1;
                 }
-
-                canvas.Save(FileName + suffix + (suffix_no == 0 ? "" : suffix_no.ToString()) + ".jpg");
+                canvas2 = new Bitmap(canvas, FinalPictureWidth * (int)numericUpDownSizeRate.Value / 100, FinalPictureHeight * (int)numericUpDownSizeRate.Value / 100);
+                canvas2.Save(FileName + suffix + (suffix_no == 0 ? "" : suffix_no.ToString()) + ".jpg");
             }
         }
 
@@ -366,7 +373,7 @@ namespace 画像処理
                     //Penオブジェクトの作成(幅1の黒色)
                     Pen p = new Pen(color, (float)numericUpDownLineWidth.Value);
 
-                    g.DrawRectangle(p, Math.Min(startPoint.X, endPoint.X), Math.Min(startPoint.Y, endPoint.Y), size_x, size_y);
+                    g.DrawRectangle(p, Math.Min(startPoint.X * pictureBoxPreviewRate, endPoint.X * pictureBoxPreviewRate), Math.Min(startPoint.Y * pictureBoxPreviewRate, endPoint.Y * pictureBoxPreviewRate), size_x * pictureBoxPreviewRate, size_y * pictureBoxPreviewRate);
                     pictureBox1.Image = canvas;
                 }
             }
@@ -388,7 +395,7 @@ namespace 画像処理
                     // 先にバックアップしていた画像で塗り潰す
                     if (backupImage != null) g.DrawImage(backupImage, 0, 0);
 
-                    g.FillRectangle(brush, Math.Min(startPoint.X, endPoint.X), Math.Min(startPoint.Y, endPoint.Y), size_x, size_y);
+                    g.FillRectangle(brush, Math.Min(startPoint.X * pictureBoxPreviewRate, endPoint.X * pictureBoxPreviewRate), Math.Min(startPoint.Y * pictureBoxPreviewRate, endPoint.Y * pictureBoxPreviewRate), size_x * pictureBoxPreviewRate, size_y * pictureBoxPreviewRate);
                     pictureBox1.Image = canvas;
                 }
             }
@@ -415,7 +422,8 @@ namespace 画像処理
                     Pen p = new Pen(color, 1);
 
                     g.DrawRectangle(p, Math.Min(startPoint.X, endPoint.X), Math.Min(startPoint.Y, endPoint.Y), size_x, size_y);
-                    pictureBox1.Image = canvas;
+                    canvas2 = new Bitmap(canvas, pictureBoxWidth, pictureBoxHeight);
+                    pictureBox1.Image = canvas2;
                 }
             }
         }
@@ -467,7 +475,8 @@ namespace 画像処理
                         g.FillRectangle(brush, Math.Min(startPoint.X, endPoint.X) + x, Math.Min(startPoint.Y, endPoint.Y) + y, Math.Min(blur_size, Math.Max(startPoint.X, endPoint.X) - x), Math.Min(blur_size, Math.Max(startPoint.Y, endPoint.Y) - y));
                     }
                 }
-                pictureBox1.Image = canvas;
+                canvas2 = new Bitmap(canvas, pictureBoxWidth, pictureBoxHeight);
+                pictureBox1.Image = canvas2;
             }
         }
 
@@ -492,7 +501,8 @@ namespace 画像処理
             if (!storeCurrentImage()) return;
             swap(ref FinalPictureHeight, ref FinalPictureWidth);
             canvas.RotateFlip(RotateFlipType.Rotate180FlipY);
-            pictureBox1.Image = canvas;
+            canvas2 = new Bitmap(canvas, pictureBoxWidth, pictureBoxHeight);
+            pictureBox1.Image = canvas2;
         }
 
         private void buttonRotate90deg_Click(object sender, EventArgs e)
@@ -508,7 +518,7 @@ namespace 画像処理
             Rectangle desRect = new Rectangle(0, 0, FinalPictureWidth, FinalPictureHeight);
             //画像の一部を描画する
             g.DrawImage(canvas, desRect, srcRect, GraphicsUnit.Pixel);
-
+            canvas2 = new Bitmap(canvas, pictureBoxWidth, pictureBoxHeight);
             fillOutOfCanvas();
         }
 

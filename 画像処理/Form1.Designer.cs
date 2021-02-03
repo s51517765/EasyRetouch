@@ -87,6 +87,9 @@
             this.buttonSnappingTool = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonSetImage2Clipboard = new System.Windows.Forms.Button();
+            this.numericUpDownSizeRate = new System.Windows.Forms.NumericUpDown();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBoxDrowEdge.SuspendLayout();
             this.groupBoxDrowMask.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -100,6 +103,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBlurSize)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSizeRate)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxFileName
@@ -739,11 +743,44 @@
             this.buttonSetImage2Clipboard.UseVisualStyleBackColor = true;
             this.buttonSetImage2Clipboard.Click += new System.EventHandler(this.buttonSetImage2Clipboard_Click);
             // 
+            // numericUpDownSizeRate
+            // 
+            this.numericUpDownSizeRate.Location = new System.Drawing.Point(1012, 784);
+            this.numericUpDownSizeRate.Name = "numericUpDownSizeRate";
+            this.numericUpDownSizeRate.Size = new System.Drawing.Size(78, 22);
+            this.numericUpDownSizeRate.TabIndex = 31;
+            this.numericUpDownSizeRate.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(1098, 787);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(15, 15);
+            this.label8.TabIndex = 32;
+            this.label8.Text = "%";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(1014, 766);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(34, 15);
+            this.label9.TabIndex = 33;
+            this.label9.Text = "Size";
+            // 
             // Form1
             // 
             this.AllowDrop = true;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1412, 952);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.numericUpDownSizeRate);
             this.Controls.Add(this.buttonSetImage2Clipboard);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -792,6 +829,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBlurSize)).EndInit();
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSizeRate)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -857,6 +895,9 @@
         private System.Windows.Forms.Button buttonFlipX;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button buttonSetImage2Clipboard;
+        private System.Windows.Forms.NumericUpDown numericUpDownSizeRate;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
     }
 }
 
