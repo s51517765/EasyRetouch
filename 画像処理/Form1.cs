@@ -30,7 +30,9 @@ namespace 画像処理
         //using System.Drawing;
         const int pictureBoxWidth = 3600;
         const int pictureBoxHeight = 3600;
-        const int pictureBoxPreviewRate = 4;
+        const int pictureBox2Width = 900;
+        const int pictureBox2Height = 900;
+        int pictureBoxPreviewRate = pictureBoxWidth / pictureBox2Width;
         int FinalPictureWidth = pictureBoxWidth;
         int FinalPictureHeight = pictureBoxHeight;
         int previousPictureWidth;
@@ -42,7 +44,7 @@ namespace 画像処理
         Graphics g;
         Bitmap backupImage;
         //描画先とするImageオブジェクトを作成する
-        Bitmap canvas2 = new Bitmap(pictureBoxWidth / pictureBoxPreviewRate, pictureBoxHeight / pictureBoxPreviewRate);
+        Bitmap canvas2 = new Bitmap(pictureBox2Width, pictureBox2Height);
         Graphics g2;
         Bitmap backupImage2;
         private bool storeCurrentImage()
@@ -73,9 +75,9 @@ namespace 画像処理
             {
                 // 先にバックアップしていた画像で塗り潰す
                 g.DrawImage(backupImage, 0, 0);
-                canvas2 = new Bitmap(canvas, pictureBoxWidth / pictureBoxPreviewRate, pictureBoxHeight / pictureBoxPreviewRate);
+                canvas2 = new Bitmap(canvas, pictureBox2Width, pictureBox2Height);
 
-                pictureBox1.Image = canvas2;
+                pictureBox2.Image = canvas2;
             }
             catch
             {
@@ -135,9 +137,9 @@ namespace 画像処理
             g.FillRectangle(brush, FinalPictureWidth, 0, pictureBoxWidth, pictureBoxHeight);
             g.FillRectangle(brush, 0, FinalPictureHeight, pictureBoxWidth, pictureBoxHeight);
 
-            canvas2 = new Bitmap(canvas, pictureBoxWidth / pictureBoxPreviewRate, pictureBoxHeight / pictureBoxPreviewRate);
+            canvas2 = new Bitmap(canvas, pictureBox2Width, pictureBox2Height);
             g2 = Graphics.FromImage(canvas2);
-            pictureBox1.Image = canvas2;
+            pictureBox2.Image = canvas2;
         }
 
         private void buttonGetClipbord_Click(object sender, EventArgs e)
@@ -174,7 +176,7 @@ namespace 画像処理
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            if (pictureBox1.Image != null)
+            if (pictureBox2.Image != null)
             {
                 int kakuchoshi = textBoxFileName.Text.IndexOf(".");
                 string FileName;
@@ -242,7 +244,7 @@ namespace 画像処理
             {
                 canvas.SetPixel(FinalPictureWidth - 1, y, color);
             }
-            pictureBox1.Image = canvas;
+            pictureBox2.Image = canvas;
         }
 
         int FlagMask = 0;
@@ -291,7 +293,7 @@ namespace 画像処理
         private void buttonTrimming_Click(object sender, EventArgs e)
         {
             if (!storeCurrentImage()) return;
-            Image img = pictureBox1.Image;
+            Image img = pictureBox2.Image;
             if (img == null) return;
 
             //ImageオブジェクトのGraphicsオブジェクトを作成する
@@ -305,7 +307,7 @@ namespace 画像処理
             FinalPictureWidth -= (right + left);
             FinalPictureHeight -= (up + down);
 
-            ////切り取る部分の範囲を決定する、開始位置、大きさ100x100
+            //切り取る部分の範囲を決定する、開始位置、大きさ100x100
             Rectangle srcRect = new Rectangle(left, up, FinalPictureWidth, FinalPictureHeight);
             //描画する部分の範囲。位置(0,0)、大きさX*Yで描画する
             Rectangle desRect = new Rectangle(0, 0, FinalPictureWidth, FinalPictureHeight);
@@ -336,7 +338,7 @@ namespace 画像処理
         Pen p;
         SolidBrush brush;
 
-        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
         {
             if (!storeCurrentImage()) return;
 
@@ -344,8 +346,8 @@ namespace 画像処理
             startPoint.Y = e.Location.Y;//クリックした座標を入れる
         }
 
-        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
-        {
+        private void pictureBox2_MouseMove(object sender, MouseEventArgs e)
+        {          
             brush = new SolidBrush(Color.FromArgb(100, 200, 0, 00));
             if (radioButtonDrowMask_Red.Checked) brush.Color = Color.FromArgb(255, 0, 0);
             else if (radioButtonDrowMask_Yellow.Checked) brush.Color = Color.FromArgb(255, 255, 0);
@@ -361,12 +363,11 @@ namespace 画像処理
             else color = Color.FromArgb(0, 0, 0);
 
             p = new Pen(color, (float)numericUpDownLineWidth.Value);
+            //ImageオブジェクトのGraphicsオブジェクトを作成する
+            //    g = Graphics.FromImage(canvas);
 
             if (FlagMask == 3) //Line
             {
-                //ImageオブジェクトのGraphicsオブジェクトを作成する
-                g = Graphics.FromImage(canvas);
-
                 // マウスの左ボタンが押されている場合のみ処理
                 if ((Control.MouseButtons & MouseButtons.Left) == MouseButtons.Left)
                 {
@@ -380,14 +381,11 @@ namespace 画像処理
                     // 先にバックアップしていた画像で塗り潰す
                     if (backupImage2 != null) g2.DrawImage(backupImage2, 0, 0);
                     g2.DrawRectangle(p, Math.Min(startPoint.X, endPoint.X), Math.Min(startPoint.Y, endPoint.Y), size_x, size_y);
-                    pictureBox1.Image = canvas2;
+                    pictureBox2.Image = canvas2;
                 }
             }
             else if (FlagMask == 1) //Mask
             {
-                //ImageオブジェクトのGraphicsオブジェクトを作成する
-                g2 = Graphics.FromImage(canvas2);
-
                 // マウスの左ボタンが押されている場合のみ処理
                 if ((Control.MouseButtons & MouseButtons.Left) == MouseButtons.Left)
                 {
@@ -401,15 +399,12 @@ namespace 画像処理
                     // 先にバックアップしていた画像で塗り潰す
                     if (backupImage2 != null) g2.DrawImage(backupImage2, 0, 0);
                     g2.FillRectangle(brush, Math.Min(startPoint.X, endPoint.X), Math.Min(startPoint.Y, endPoint.Y), size_x, size_y);
-                    pictureBox1.Image = canvas2;
+                    pictureBox2.Image = canvas2;
                 }
 
             }
             else if (FlagMask == 2)//ぼかし
             {
-                //ImageオブジェクトのGraphicsオブジェクトを作成する
-                g = Graphics.FromImage(canvas);
-
                 // マウスの左ボタンが押されている場合のみ処理
                 if ((Control.MouseButtons & MouseButtons.Left) == MouseButtons.Left)
                 {
@@ -421,20 +416,20 @@ namespace 画像処理
                     size_y = Math.Abs(startPoint.Y - endPoint.Y);
 
                     // 先にバックアップしていた画像で塗り潰す
-                    if (backupImage != null) g.DrawImage(backupImage, 0, 0);
+                    if (backupImage2 != null) g2.DrawImage(backupImage2, 0, 0);
 
                     //Penオブジェクトの作成(幅1の灰色)
                     color = Color.FromArgb(250, 100, 150);
-                    p = new Pen(color, 1);
+                    p = new Pen(color, 2);
 
-                    g.DrawRectangle(p, Math.Min(startPoint.X, endPoint.X), Math.Min(startPoint.Y, endPoint.Y), size_x, size_y);
-                    canvas2 = new Bitmap(canvas, pictureBoxWidth / pictureBoxPreviewRate, pictureBoxHeight / pictureBoxPreviewRate);
-                    pictureBox1.Image = canvas2;
+                    g2.DrawRectangle(p, Math.Min(startPoint.X, endPoint.X), Math.Min(startPoint.Y, endPoint.Y), size_x, size_y);
+                    pictureBox2.Image = canvas2;
+                    Application.DoEvents();
                 }
             }
         }
 
-        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
+        private void pictureBox2_MouseUp(object sender, MouseEventArgs e)
         {
             if (FlagMask == 1)
             {
@@ -455,26 +450,33 @@ namespace 画像処理
                 else if (radioButtonSqLine_Green.Checked) color = Color.FromArgb(0, 255, 0);
                 else if (radioButtonSqLine_Blue.Checked) color = Color.FromArgb(0, 0, 255);
                 else color = Color.FromArgb(0, 0, 0);
-                p = new Pen(color, (float)numericUpDownLineWidth.Value* pictureBoxPreviewRate);
+                p = new Pen(color, (float)numericUpDownLineWidth.Value * pictureBoxPreviewRate);
                 g.DrawRectangle(p, Math.Min(startPoint.X * pictureBoxPreviewRate, endPoint.X * pictureBoxPreviewRate), Math.Min(startPoint.Y * pictureBoxPreviewRate, endPoint.Y * pictureBoxPreviewRate), size_x * pictureBoxPreviewRate, size_y * pictureBoxPreviewRate);
 
             }
             else if (FlagMask == 2)
             {
                 //Lineを消す
-                if (backupImage != null) g.DrawImage(backupImage, 0, 0);
+                if (backupImage2 != null) g2.DrawImage(backupImage2, 0, 0);
 
                 //ImageオブジェクトのGraphicsオブジェクトを作成する
-                g = Graphics.FromImage(canvas);
+          //      g2 = Graphics.FromImage(canvas2);
+                // 先にバックアップしていた画像で塗り潰す
+                if (backupImage2 != null) g2.DrawImage(backupImage2, 0, 0);
                 int blur_size = (int)numericUpDownBlurSize.Value;
+
+                startPoint.X *= pictureBoxPreviewRate;
+                startPoint.Y *= pictureBoxPreviewRate;
+                endPoint.X *= pictureBoxPreviewRate;
+                endPoint.Y *= pictureBoxPreviewRate;
+                size_x *= pictureBoxPreviewRate;
+                size_y *= pictureBoxPreviewRate;
 
                 if (endPoint.X > FinalPictureWidth) endPoint.X = FinalPictureWidth;
                 else if (endPoint.X < 0) endPoint.X = 0;
                 if (endPoint.Y > FinalPictureHeight) endPoint.Y = FinalPictureHeight;
                 else if (endPoint.Y < 0) endPoint.Y = 0;
-
-                int size_x = Math.Abs(startPoint.X - endPoint.X);
-                int size_y = Math.Abs(startPoint.Y - endPoint.Y);
+                               
                 int tmp = Math.Min(size_x, size_y);
                 blur_size = Math.Min(tmp, blur_size);
                 if (blur_size == 0) return;
@@ -504,9 +506,10 @@ namespace 画像処理
                         g.FillRectangle(brush, Math.Min(startPoint.X, endPoint.X) + x, Math.Min(startPoint.Y, endPoint.Y) + y, Math.Min(blur_size, Math.Max(startPoint.X, endPoint.X) - x), Math.Min(blur_size, Math.Max(startPoint.Y, endPoint.Y) - y));
                     }
                 }
-                canvas2 = new Bitmap(canvas, pictureBoxWidth / pictureBoxPreviewRate, pictureBoxHeight / pictureBoxPreviewRate);
-                pictureBox1.Image = canvas2;
+
             }
+            canvas2 = new Bitmap(canvas, pictureBox2Width, pictureBox2Height);
+            pictureBox2.Image = canvas2;
         }
 
         private void buttonTrimingValueReset_Click(object sender, EventArgs e)
@@ -530,8 +533,8 @@ namespace 画像処理
             if (!storeCurrentImage()) return;
             swap(ref FinalPictureHeight, ref FinalPictureWidth);
             canvas.RotateFlip(RotateFlipType.Rotate180FlipY);
-            canvas2 = new Bitmap(canvas, pictureBoxWidth / pictureBoxPreviewRate, pictureBoxHeight / pictureBoxPreviewRate);
-            pictureBox1.Image = canvas2;
+            canvas2 = new Bitmap(canvas, pictureBox2Width, pictureBox2Height);
+            pictureBox2.Image = canvas2;
         }
 
         private void buttonRotate90deg_Click(object sender, EventArgs e)
@@ -547,7 +550,7 @@ namespace 画像処理
             Rectangle desRect = new Rectangle(0, 0, FinalPictureWidth, FinalPictureHeight);
             //画像の一部を描画する
             g.DrawImage(canvas, desRect, srcRect, GraphicsUnit.Pixel);
-            canvas2 = new Bitmap(canvas, pictureBoxWidth / pictureBoxPreviewRate, pictureBoxHeight / pictureBoxPreviewRate);
+            canvas2 = new Bitmap(canvas, pictureBox2Width, pictureBox2Height);
             fillOutOfCanvas();
         }
 
@@ -599,7 +602,7 @@ namespace 画像処理
         private void buttonSetImage2Clipboard_Click(object sender, EventArgs e)
         {
             //画像を取得
-            Bitmap bmp = new Bitmap(pictureBox1.Image);
+            Bitmap bmp = new Bitmap(pictureBox2.Image);
             // 現在のサイズにトリミング
             Rectangle Rect = new Rectangle(0, 0, FinalPictureWidth, FinalPictureHeight);
             Bitmap NewBmp = bmp.Clone(Rect, bmp.PixelFormat);

@@ -85,7 +85,7 @@
             this.buttonFlipY = new System.Windows.Forms.Button();
             this.buttonFileOpen = new System.Windows.Forms.Button();
             this.buttonSnappingTool = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.buttonSetImage2Clipboard = new System.Windows.Forms.Button();
             this.numericUpDownSizeRate = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
@@ -102,7 +102,7 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBlurSize)).BeginInit();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSizeRate)).BeginInit();
             this.SuspendLayout();
             // 
@@ -628,7 +628,7 @@
             this.numericUpDownBlurSize.Size = new System.Drawing.Size(68, 22);
             this.numericUpDownBlurSize.TabIndex = 26;
             this.numericUpDownBlurSize.Value = new decimal(new int[] {
-            5,
+            10,
             0,
             0,
             0});
@@ -717,19 +717,19 @@
             this.buttonSnappingTool.UseVisualStyleBackColor = true;
             this.buttonSnappingTool.Click += new System.EventHandler(this.buttonSnappingTool_Click);
             // 
-            // pictureBox1
+            // pictureBox2
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Gainsboro;
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(14, 48);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(900, 900);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
-            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
-            this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
+            this.pictureBox2.BackColor = System.Drawing.Color.Gainsboro;
+            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox2.Location = new System.Drawing.Point(14, 48);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(900, 900);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 2;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox2_MouseDown);
+            this.pictureBox2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox2_MouseMove);
+            this.pictureBox2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox2_MouseUp);
             // 
             // buttonSetImage2Clipboard
             // 
@@ -791,7 +791,7 @@
             this.Controls.Add(this.labelStartMsg4);
             this.Controls.Add(this.labelStartMsg2);
             this.Controls.Add(this.labelStartMsg1);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.buttonUndo);
             this.Controls.Add(this.buttonGetClipbord);
             this.Controls.Add(this.groupBox1);
@@ -828,7 +828,7 @@
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBlurSize)).EndInit();
             this.groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSizeRate)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -838,7 +838,7 @@
         #endregion
 
         private System.Windows.Forms.TextBox textBoxFileName;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonDrowEdgeLine;
         private System.Windows.Forms.Label label1;
