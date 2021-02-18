@@ -87,9 +87,9 @@
             this.buttonSnappingTool = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.buttonSetImage2Clipboard = new System.Windows.Forms.Button();
-            this.numericUpDownSizeRate = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownOutputSize = new System.Windows.Forms.NumericUpDown();
+            this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.groupBoxDrowEdge.SuspendLayout();
             this.groupBoxDrowMask.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -103,7 +103,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBlurSize)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSizeRate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOutputSize)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxFileName
@@ -743,44 +743,49 @@
             this.buttonSetImage2Clipboard.UseVisualStyleBackColor = true;
             this.buttonSetImage2Clipboard.Click += new System.EventHandler(this.buttonSetImage2Clipboard_Click);
             // 
-            // numericUpDownSizeRate
+            // numericUpDownOutputSize
             // 
-            this.numericUpDownSizeRate.Location = new System.Drawing.Point(1012, 784);
-            this.numericUpDownSizeRate.Name = "numericUpDownSizeRate";
-            this.numericUpDownSizeRate.Size = new System.Drawing.Size(78, 22);
-            this.numericUpDownSizeRate.TabIndex = 31;
-            this.numericUpDownSizeRate.Value = new decimal(new int[] {
-            50,
+            this.numericUpDownOutputSize.Location = new System.Drawing.Point(1021, 806);
+            this.numericUpDownOutputSize.Maximum = new decimal(new int[] {
+            3600,
+            0,
+            0,
+            0});
+            this.numericUpDownOutputSize.Name = "numericUpDownOutputSize";
+            this.numericUpDownOutputSize.Size = new System.Drawing.Size(78, 22);
+            this.numericUpDownOutputSize.TabIndex = 34;
+            this.numericUpDownOutputSize.Value = new decimal(new int[] {
+            1200,
             0,
             0,
             0});
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(1024, 789);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(111, 15);
+            this.label10.TabIndex = 35;
+            this.label10.Text = "Output size max";
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(1098, 787);
+            this.label8.Location = new System.Drawing.Point(1101, 810);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(15, 15);
-            this.label8.TabIndex = 32;
-            this.label8.Text = "%";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(1014, 766);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(34, 15);
-            this.label9.TabIndex = 33;
-            this.label9.Text = "Size";
+            this.label8.Size = new System.Drawing.Size(21, 15);
+            this.label8.TabIndex = 36;
+            this.label8.Text = "px";
             // 
             // Form1
             // 
             this.AllowDrop = true;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1412, 952);
-            this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.numericUpDownSizeRate);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.numericUpDownOutputSize);
             this.Controls.Add(this.buttonSetImage2Clipboard);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -807,7 +812,7 @@
             this.MinimumSize = new System.Drawing.Size(1430, 999);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Easy Retouch      *Ver.2021-01-27";
+            this.Text = "Easy Retouch      *Ver.2021-02-18";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form1_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form1_DragEnter);
@@ -829,7 +834,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBlurSize)).EndInit();
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSizeRate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOutputSize)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -895,9 +900,9 @@
         private System.Windows.Forms.Button buttonFlipX;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button buttonSetImage2Clipboard;
-        private System.Windows.Forms.NumericUpDown numericUpDownSizeRate;
+        private System.Windows.Forms.NumericUpDown numericUpDownOutputSize;
+        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
     }
 }
 

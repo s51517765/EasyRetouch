@@ -38,6 +38,7 @@ namespace 画像処理
         int previousPictureWidth;
         int previousPictureHeight;
         float reSizeRate;
+        bool isPicureSmall = false;
 
         //出力画像用Imageオブジェクトを作成する
         Bitmap canvas = new Bitmap(pictureBoxWidth, pictureBoxHeight);
@@ -49,6 +50,7 @@ namespace 画像処理
         Bitmap backupImage2;
         private bool storeCurrentImage()
         {
+            if (pictureBox2.Image == null) return false;
             try
             {
                 // 画像のバックアップを取得
@@ -102,16 +104,36 @@ namespace 画像処理
                 {
                     img = defImg;
                 }
-                //リサイズ率が小さいほう
-                reSizeRate = ((float)canvas.Width / (float)img.Width) < ((float)canvas.Height / (float)img.Height) ? (float)canvas.Width / (float)img.Width : (float)canvas.Height / (float)img.Height;
 
-                if (reSizeRate > 1) reSizeRate = 1; //小さい画像は拡大しない
-                //画像をcanvasの座標(0, 0)の位置に描画する
-                float w = (float)img.Width;
-                float h = (float)img.Height;
-                FinalPictureHeight = (int)(h * reSizeRate);
-                FinalPictureWidth = (int)(w * reSizeRate);
-                g.DrawImage(img, 0, 0, (int)(w * reSizeRate), (int)(h * reSizeRate));
+                //画像がPreviewエリアより小さいとき
+                if (Math.Max(img.Width, img.Height) < canvas2.Height)
+                {
+                    reSizeRate = (float)Math.Max(img.Width, img.Height) / (float)pictureBoxWidth;
+                }
+                else
+                {
+                    //リサイズ率が小さいほう
+                    reSizeRate = Math.Min((float)canvas.Width / (float)img.Width, (float)canvas.Height / (float)img.Height);
+                }
+
+                //画像がPreviewエリアより小さいとき
+                if (Math.Max(img.Width, img.Height) < canvas2.Height)
+                {
+                    isPicureSmall = true;
+                    FinalPictureHeight = img.Height * pictureBoxPreviewRate;
+                    FinalPictureWidth = img.Width * pictureBoxPreviewRate;
+                }
+                else
+                {
+                    isPicureSmall = false;
+                    float w = (float)img.Width;
+                    float h = (float)img.Height;
+                    FinalPictureHeight = (int)(h * reSizeRate);
+                    FinalPictureWidth = (int)(w * reSizeRate);
+                }
+
+                //画像をcanvasの座標(0, 0)の位置に描画する                                           }
+                g.DrawImage(img, 0, 0, FinalPictureWidth, FinalPictureHeight);
                 //Imageオブジェクトのリソースを解放する
                 img.Dispose();
 
@@ -212,7 +234,16 @@ namespace 画像処理
                 {
                     suffix_no += 1;
                 }
-                canvas2 = new Bitmap(canvas0, FinalPictureWidth * (int)numericUpDownSizeRate.Value / 100, FinalPictureHeight * (int)numericUpDownSizeRate.Value / 100);
+
+                if (isPicureSmall)
+                {
+                    canvas2 = new Bitmap(canvas0, (int)(FinalPictureWidth / pictureBoxPreviewRate), (int)(FinalPictureHeight / pictureBoxPreviewRate));
+                }
+                else
+                {
+                    float finalResizeRate = Math.Min((float)numericUpDownOutputSize.Value / (float)FinalPictureWidth, (float)numericUpDownOutputSize.Value / (float)FinalPictureHeight);
+                    canvas2 = new Bitmap(canvas0, (int)(FinalPictureWidth * finalResizeRate), (int)(FinalPictureHeight * finalResizeRate));
+                }
                 canvas2.Save(FileName + suffix + (suffix_no == 0 ? "" : suffix_no.ToString()) + ".jpg");
             }
         }
@@ -293,26 +324,22 @@ namespace 画像処理
         private void buttonTrimming_Click(object sender, EventArgs e)
         {
             if (!storeCurrentImage()) return;
-            Image img = pictureBox2.Image;
-            if (img == null) return;
-
-            //ImageオブジェクトのGraphicsオブジェクトを作成する
-            g = Graphics.FromImage(canvas);
+            Graphics g = Graphics.FromImage(canvas);
 
             //切り取る部分の範囲を決定する。
-            int up = (int)numericUpDownTrimUp.Value;
-            int down = (int)numericUpDownTrimDown.Value;
-            int right = (int)numericUpDownTrimRight.Value;
-            int left = (int)numericUpDownTrimLeft.Value;
+            int up = (int)numericUpDownTrimUp.Value * pictureBoxPreviewRate;
+            int down = (int)numericUpDownTrimDown.Value * pictureBoxPreviewRate;
+            int right = (int)numericUpDownTrimRight.Value * pictureBoxPreviewRate;
+            int left = (int)numericUpDownTrimLeft.Value * pictureBoxPreviewRate;
             FinalPictureWidth -= (right + left);
             FinalPictureHeight -= (up + down);
 
-            //切り取る部分の範囲を決定する、開始位置、大きさ100x100
+            //切り取る部分の範囲を決定する、開始位置、大きさX*Y
             Rectangle srcRect = new Rectangle(left, up, FinalPictureWidth, FinalPictureHeight);
             //描画する部分の範囲。位置(0,0)、大きさX*Yで描画する
             Rectangle desRect = new Rectangle(0, 0, FinalPictureWidth, FinalPictureHeight);
             //画像の一部を描画する
-            g.DrawImage(img, desRect, srcRect, GraphicsUnit.Pixel);
+            g.DrawImage(canvas, desRect, srcRect, GraphicsUnit.Pixel);
 
             fillOutOfCanvas();
         }
@@ -347,7 +374,7 @@ namespace 画像処理
         }
 
         private void pictureBox2_MouseMove(object sender, MouseEventArgs e)
-        {          
+        {
             brush = new SolidBrush(Color.FromArgb(100, 200, 0, 00));
             if (radioButtonDrowMask_Red.Checked) brush.Color = Color.FromArgb(255, 0, 0);
             else if (radioButtonDrowMask_Yellow.Checked) brush.Color = Color.FromArgb(255, 255, 0);
@@ -363,8 +390,6 @@ namespace 画像処理
             else color = Color.FromArgb(0, 0, 0);
 
             p = new Pen(color, (float)numericUpDownLineWidth.Value);
-            //ImageオブジェクトのGraphicsオブジェクトを作成する
-            //    g = Graphics.FromImage(canvas);
 
             if (FlagMask == 3) //Line
             {
@@ -459,8 +484,6 @@ namespace 画像処理
                 //Lineを消す
                 if (backupImage2 != null) g2.DrawImage(backupImage2, 0, 0);
 
-                //ImageオブジェクトのGraphicsオブジェクトを作成する
-          //      g2 = Graphics.FromImage(canvas2);
                 // 先にバックアップしていた画像で塗り潰す
                 if (backupImage2 != null) g2.DrawImage(backupImage2, 0, 0);
                 int blur_size = (int)numericUpDownBlurSize.Value;
@@ -476,7 +499,7 @@ namespace 画像処理
                 else if (endPoint.X < 0) endPoint.X = 0;
                 if (endPoint.Y > FinalPictureHeight) endPoint.Y = FinalPictureHeight;
                 else if (endPoint.Y < 0) endPoint.Y = 0;
-                               
+
                 int tmp = Math.Min(size_x, size_y);
                 blur_size = Math.Min(tmp, blur_size);
                 if (blur_size == 0) return;
