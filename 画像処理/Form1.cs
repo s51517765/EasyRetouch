@@ -132,7 +132,7 @@ namespace 画像処理
                     FinalPictureWidth = (int)(w * reSizeRate);
                 }
 
-                //画像をcanvasの座標(0, 0)の位置に描画する                                           }
+                //画像をcanvasの座標(0, 0)の位置に描画する
                 g.DrawImage(img, 0, 0, FinalPictureWidth, FinalPictureHeight);
                 //Imageオブジェクトのリソースを解放する
                 img.Dispose();
@@ -364,6 +364,7 @@ namespace 画像処理
         int size_y = 0;
         Pen p;
         SolidBrush brush;
+        bool flag = true;
 
         private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
         {
@@ -375,26 +376,26 @@ namespace 画像処理
 
         private void pictureBox2_MouseMove(object sender, MouseEventArgs e)
         {
-            brush = new SolidBrush(Color.FromArgb(100, 200, 0, 00));
-            if (radioButtonDrowMask_Red.Checked) brush.Color = Color.FromArgb(255, 0, 0);
-            else if (radioButtonDrowMask_Yellow.Checked) brush.Color = Color.FromArgb(255, 255, 0);
-            else if (radioButtonDrowMask_Green.Checked) brush.Color = Color.FromArgb(0, 255, 0);
-            else if (radioButtonDrowMask_Blue.Checked) brush.Color = Color.FromArgb(0, 0, 255);
-            else brush.Color = Color.FromArgb(0, 0, 0);
-
-            Color color;
-            if (radioButtonSqLine_Red.Checked) color = Color.FromArgb(255, 0, 0);
-            else if (radioButtonSqLine_Yellow.Checked) color = Color.FromArgb(255, 255, 0);
-            else if (radioButtonSqLine_Green.Checked) color = Color.FromArgb(0, 255, 0);
-            else if (radioButtonSqLine_Blue.Checked) color = Color.FromArgb(0, 0, 255);
-            else color = Color.FromArgb(0, 0, 0);
-
-            p = new Pen(color, (float)numericUpDownLineWidth.Value);
-
-            if (FlagMask == 3) //Line
+            // マウスの左ボタンが押されている場合のみ処理
+            if ((Control.MouseButtons & MouseButtons.Left) == MouseButtons.Left)
             {
-                // マウスの左ボタンが押されている場合のみ処理
-                if ((Control.MouseButtons & MouseButtons.Left) == MouseButtons.Left)
+                brush = new SolidBrush(Color.FromArgb(100, 200, 0, 00));
+                if (radioButtonDrowMask_Red.Checked) brush.Color = Color.FromArgb(255, 0, 0);
+                else if (radioButtonDrowMask_Yellow.Checked) brush.Color = Color.FromArgb(255, 255, 0);
+                else if (radioButtonDrowMask_Green.Checked) brush.Color = Color.FromArgb(0, 255, 0);
+                else if (radioButtonDrowMask_Blue.Checked) brush.Color = Color.FromArgb(0, 0, 255);
+                else brush.Color = Color.FromArgb(0, 0, 0);
+
+                Color color;
+                if (radioButtonSqLine_Red.Checked) color = Color.FromArgb(255, 0, 0);
+                else if (radioButtonSqLine_Yellow.Checked) color = Color.FromArgb(255, 255, 0);
+                else if (radioButtonSqLine_Green.Checked) color = Color.FromArgb(0, 255, 0);
+                else if (radioButtonSqLine_Blue.Checked) color = Color.FromArgb(0, 0, 255);
+                else color = Color.FromArgb(0, 0, 0);
+
+                p = new Pen(color, (float)numericUpDownLineWidth.Value);
+
+                if (FlagMask == 3) //Line
                 {
                     // 座標を取得
                     endPoint.X = e.Location.X;
@@ -407,12 +408,9 @@ namespace 画像処理
                     if (backupImage2 != null) g2.DrawImage(backupImage2, 0, 0);
                     g2.DrawRectangle(p, Math.Min(startPoint.X, endPoint.X), Math.Min(startPoint.Y, endPoint.Y), size_x, size_y);
                     pictureBox2.Image = canvas2;
+
                 }
-            }
-            else if (FlagMask == 1) //Mask
-            {
-                // マウスの左ボタンが押されている場合のみ処理
-                if ((Control.MouseButtons & MouseButtons.Left) == MouseButtons.Left)
+                else if (FlagMask == 1) //Mask
                 {
                     // 座標を取得
                     endPoint.X = e.Location.X;
@@ -426,12 +424,7 @@ namespace 画像処理
                     g2.FillRectangle(brush, Math.Min(startPoint.X, endPoint.X), Math.Min(startPoint.Y, endPoint.Y), size_x, size_y);
                     pictureBox2.Image = canvas2;
                 }
-
-            }
-            else if (FlagMask == 2)//ぼかし
-            {
-                // マウスの左ボタンが押されている場合のみ処理
-                if ((Control.MouseButtons & MouseButtons.Left) == MouseButtons.Left)
+                else if (FlagMask == 2)//ぼかし
                 {
                     // 座標を取得
                     endPoint.X = e.Location.X;
@@ -443,7 +436,7 @@ namespace 画像処理
                     // 先にバックアップしていた画像で塗り潰す
                     if (backupImage2 != null) g2.DrawImage(backupImage2, 0, 0);
 
-                    //Penオブジェクトの作成(幅1の灰色)
+                    //Penオブジェクトの作成
                     color = Color.FromArgb(250, 100, 150);
                     p = new Pen(color, 2);
 
@@ -481,12 +474,10 @@ namespace 画像処理
             }
             else if (FlagMask == 2)
             {
-                //Lineを消す
-                if (backupImage2 != null) g2.DrawImage(backupImage2, 0, 0);
-
                 // 先にバックアップしていた画像で塗り潰す
                 if (backupImage2 != null) g2.DrawImage(backupImage2, 0, 0);
                 int blur_size = (int)numericUpDownBlurSize.Value;
+                blur_size *= Math.Max(canvas.Size.Height, canvas.Size.Width) / Math.Max(canvas2.Size.Height, canvas2.Size.Width);
 
                 startPoint.X *= pictureBoxPreviewRate;
                 startPoint.Y *= pictureBoxPreviewRate;
@@ -529,7 +520,6 @@ namespace 画像処理
                         g.FillRectangle(brush, Math.Min(startPoint.X, endPoint.X) + x, Math.Min(startPoint.Y, endPoint.Y) + y, Math.Min(blur_size, Math.Max(startPoint.X, endPoint.X) - x), Math.Min(blur_size, Math.Max(startPoint.Y, endPoint.Y) - y));
                     }
                 }
-
             }
             canvas2 = new Bitmap(canvas, pictureBox2Width, pictureBox2Height);
             pictureBox2.Image = canvas2;
@@ -542,7 +532,6 @@ namespace 画像処理
             numericUpDownTrimRight.Value = 0;
             numericUpDownTrimLeft.Value = 0;
         }
-
 
         private void swap(ref int a, ref int b)
         {
