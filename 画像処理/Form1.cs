@@ -364,7 +364,6 @@ namespace 画像処理
         int size_y = 0;
         Pen p;
         SolidBrush brush;
-        bool flag = true;
 
         private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
         {
@@ -379,6 +378,9 @@ namespace 画像処理
             // マウスの左ボタンが押されている場合のみ処理
             if ((Control.MouseButtons & MouseButtons.Left) == MouseButtons.Left)
             {
+                canvas2 = new Bitmap(canvas, pictureBox2Width, pictureBox2Height);
+                g2 = Graphics.FromImage(canvas2);
+
                 brush = new SolidBrush(Color.FromArgb(100, 200, 0, 00));
                 if (radioButtonDrowMask_Red.Checked) brush.Color = Color.FromArgb(255, 0, 0);
                 else if (radioButtonDrowMask_Yellow.Checked) brush.Color = Color.FromArgb(255, 255, 0);
@@ -442,14 +444,13 @@ namespace 画像処理
 
                     g2.DrawRectangle(p, Math.Min(startPoint.X, endPoint.X), Math.Min(startPoint.Y, endPoint.Y), size_x, size_y);
                     pictureBox2.Image = canvas2;
-                    Application.DoEvents();
                 }
             }
         }
 
         private void pictureBox2_MouseUp(object sender, MouseEventArgs e)
         {
-            if (FlagMask == 1)
+            if (FlagMask == 1) //Mask
             {
                 brush = new SolidBrush(Color.FromArgb(100, 200, 0, 00));
                 if (radioButtonDrowMask_Red.Checked) brush.Color = Color.FromArgb(255, 0, 0);
@@ -460,7 +461,7 @@ namespace 画像処理
                 g.FillRectangle(brush, Math.Min(startPoint.X * pictureBoxPreviewRate, endPoint.X * pictureBoxPreviewRate), Math.Min(startPoint.Y * pictureBoxPreviewRate, endPoint.Y * pictureBoxPreviewRate), size_x * pictureBoxPreviewRate, size_y * pictureBoxPreviewRate);
 
             }
-            else if (FlagMask == 3)
+            else if (FlagMask == 3) //Line
             {
                 Color color;
                 if (radioButtonSqLine_Red.Checked) color = Color.FromArgb(255, 0, 0);
