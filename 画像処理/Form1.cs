@@ -213,9 +213,6 @@ namespace 画像処理
                     FileName = textBoxFileName.Text.Substring(0, kakuchoshi);
                 }
 
-                //ImageオブジェクトのGraphicsオブジェクトを作成する
-                g = Graphics.FromImage(canvas);
-
                 //トリミング
                 Rectangle srcRect = new Rectangle(0, 0, FinalPictureWidth, FinalPictureHeight);
                 //描画する部分の範囲。位置(0,0)、大きさX * Yで描画する
@@ -613,16 +610,30 @@ namespace 画像処理
         }
 
         private void buttonSetImage2Clipboard_Click(object sender, EventArgs e)
-        {
-            //画像を取得
-            Bitmap bmp = new Bitmap(pictureBox2.Image);
-            // 現在のサイズにトリミング
-            Rectangle Rect = new Rectangle(0, 0, FinalPictureWidth, FinalPictureHeight);
-            Bitmap NewBmp = bmp.Clone(Rect, bmp.PixelFormat);
+        {            
+            //トリミング
+            Rectangle srcRect = new Rectangle(0, 0, FinalPictureWidth, FinalPictureHeight);
+            //描画する部分の範囲。位置(0,0)、大きさX * Yで描画する
+            Rectangle desRect = new Rectangle(0, 0, srcRect.Width, srcRect.Height);
 
-            Clipboard.SetImage(NewBmp);
-            bmp.Dispose();
-            NewBmp.Dispose();
+            //最終出力用
+            Bitmap canvas0 = new Bitmap(FinalPictureWidth, FinalPictureHeight);
+            Graphics g0 = Graphics.FromImage(canvas0);
+
+            //画像の一部を描画する
+            g0.DrawImage(canvas, desRect, srcRect, GraphicsUnit.Pixel);
+
+            if (isPicureSmall)
+            {
+                canvas2 = new Bitmap(canvas0, (int)(FinalPictureWidth / pictureBoxPreviewRate), (int)(FinalPictureHeight / pictureBoxPreviewRate));
+            }
+            else
+            {
+                float finalResizeRate = Math.Min((float)numericUpDownOutputSize.Value / (float)FinalPictureWidth, (float)numericUpDownOutputSize.Value / (float)FinalPictureHeight);
+                canvas2 = new Bitmap(canvas0, (int)(FinalPictureWidth * finalResizeRate), (int)(FinalPictureHeight * finalResizeRate));
+            }
+
+            Clipboard.SetImage(canvas2);
         }
 
         private void textBoxFileName_KeyDown(object sender, KeyEventArgs e)
