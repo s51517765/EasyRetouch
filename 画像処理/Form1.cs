@@ -213,18 +213,6 @@ namespace 画像処理
                     FileName = textBoxFileName.Text.Substring(0, kakuchoshi);
                 }
 
-                //トリミング
-                Rectangle srcRect = new Rectangle(0, 0, FinalPictureWidth, FinalPictureHeight);
-                //描画する部分の範囲。位置(0,0)、大きさX * Yで描画する
-                Rectangle desRect = new Rectangle(0, 0, srcRect.Width, srcRect.Height);
-
-                //最終出力用
-                Bitmap canvas0 = new Bitmap(FinalPictureWidth, FinalPictureHeight);
-                Graphics g0 = Graphics.FromImage(canvas0);
-
-                //画像の一部を描画する
-                g0.DrawImage(canvas, desRect, srcRect, GraphicsUnit.Pixel);
-
                 string suffix = textBoxSuffix.Text;
                 int suffix_no = 0;
                 while (System.IO.File.Exists(FileName + suffix + (suffix_no == 0 ? "" : suffix_no.ToString()) + ".jpg"))
@@ -232,16 +220,8 @@ namespace 画像処理
                     suffix_no += 1;
                 }
 
-                if (isPicureSmall)
-                {
-                    canvas2 = new Bitmap(canvas0, (int)(FinalPictureWidth / pictureBoxPreviewRate), (int)(FinalPictureHeight / pictureBoxPreviewRate));
-                }
-                else
-                {
-                    float finalResizeRate = Math.Min((float)numericUpDownOutputSize.Value / (float)FinalPictureWidth, (float)numericUpDownOutputSize.Value / (float)FinalPictureHeight);
-                    canvas2 = new Bitmap(canvas0, (int)(FinalPictureWidth * finalResizeRate), (int)(FinalPictureHeight * finalResizeRate));
-                }
-                canvas2.Save(FileName + suffix + (suffix_no == 0 ? "" : suffix_no.ToString()) + ".jpg");
+                Bitmap canvas0 = FinalResize(canvas);
+                canvas0.Save(FileName + suffix + (suffix_no == 0 ? "" : suffix_no.ToString()) + ".jpg");
             }
         }
 
@@ -609,8 +589,8 @@ namespace 画像処理
             fillOutOfCanvas();
         }
 
-        private void buttonSetImage2Clipboard_Click(object sender, EventArgs e)
-        {            
+        private Bitmap FinalResize(Bitmap canvas)
+        {
             //トリミング
             Rectangle srcRect = new Rectangle(0, 0, FinalPictureWidth, FinalPictureHeight);
             //描画する部分の範囲。位置(0,0)、大きさX * Yで描画する
@@ -625,15 +605,20 @@ namespace 画像処理
 
             if (isPicureSmall)
             {
-                canvas2 = new Bitmap(canvas0, (int)(FinalPictureWidth / pictureBoxPreviewRate), (int)(FinalPictureHeight / pictureBoxPreviewRate));
+                canvas0 = new Bitmap(canvas0, (int)(FinalPictureWidth / pictureBoxPreviewRate), (int)(FinalPictureHeight / pictureBoxPreviewRate));
             }
             else
             {
                 float finalResizeRate = Math.Min((float)numericUpDownOutputSize.Value / (float)FinalPictureWidth, (float)numericUpDownOutputSize.Value / (float)FinalPictureHeight);
-                canvas2 = new Bitmap(canvas0, (int)(FinalPictureWidth * finalResizeRate), (int)(FinalPictureHeight * finalResizeRate));
+                canvas0 = new Bitmap(canvas0, (int)(FinalPictureWidth * finalResizeRate), (int)(FinalPictureHeight * finalResizeRate));
             }
+            return canvas0;
+        }
 
-            Clipboard.SetImage(canvas2);
+        private void buttonSetImage2Clipboard_Click(object sender, EventArgs e)
+        {
+            Bitmap canvas0 = FinalResize(canvas);
+            Clipboard.SetImage(canvas0);
         }
 
         private void textBoxFileName_KeyDown(object sender, KeyEventArgs e)
