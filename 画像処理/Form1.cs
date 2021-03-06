@@ -227,6 +227,9 @@ namespace 画像処理
 
         private void buttonDrowEdgeLine_Click(object sender, EventArgs e)
         {
+            //p = new Pen(color, (float)numericUpDownLineWidth.Value * pictureBoxPreviewRate);
+            int width = (int)numericUpDownSurroundLineWidth.Value * pictureBoxPreviewRate;
+
             if (!storeCurrentImage()) return;
 
             Color color;
@@ -238,19 +241,23 @@ namespace 画像処理
 
             for (int x = 0; x < FinalPictureWidth; x++)
             {
-                canvas.SetPixel(x, 0, color);
+                for (int y = 0; y < width; y++)
+                    canvas.SetPixel(x, y, color);
             }
             for (int y = 0; y < FinalPictureHeight; y++)
             {
-                canvas.SetPixel(0, y, color);
+                for (int x = 0; x < width; x++)
+                    canvas.SetPixel(x, y, color);
             }
             for (int x = 0; x < FinalPictureWidth; x++)
             {
-                canvas.SetPixel(x, FinalPictureHeight - 1, color);
+                for (int y = 0; y < width; y++)
+                    canvas.SetPixel(x, FinalPictureHeight - 1 - y, color);
             }
             for (int y = 0; y < FinalPictureHeight; y++)
             {
-                canvas.SetPixel(FinalPictureWidth - 1, y, color);
+                for (int x = 0; x < width; x++)
+                    canvas.SetPixel(FinalPictureWidth - 1 - x, y, color);
             }
             pictureBox2.Image = canvas;
         }

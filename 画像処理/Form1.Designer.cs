@@ -90,6 +90,8 @@
             this.numericUpDownOutputSize = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.numericUpDownSurroundLineWidth = new System.Windows.Forms.NumericUpDown();
             this.groupBoxDrowEdge.SuspendLayout();
             this.groupBoxDrowMask.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -104,6 +106,7 @@
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOutputSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSurroundLineWidth)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxFileName
@@ -167,7 +170,7 @@
             this.groupBoxDrowEdge.Controls.Add(this.buttonDrowEdgeLine);
             this.groupBoxDrowEdge.Location = new System.Drawing.Point(990, 90);
             this.groupBoxDrowEdge.Name = "groupBoxDrowEdge";
-            this.groupBoxDrowEdge.Size = new System.Drawing.Size(200, 147);
+            this.groupBoxDrowEdge.Size = new System.Drawing.Size(200, 194);
             this.groupBoxDrowEdge.TabIndex = 7;
             this.groupBoxDrowEdge.TabStop = false;
             this.groupBoxDrowEdge.Text = "Surround Line";
@@ -232,7 +235,7 @@
             this.groupBoxDrowMask.Controls.Add(this.buttonDrowMask);
             this.groupBoxDrowMask.Controls.Add(this.radioButtonDrowMask_Yellow);
             this.groupBoxDrowMask.Controls.Add(this.radioButtonDrowMask_Red);
-            this.groupBoxDrowMask.Location = new System.Drawing.Point(990, 245);
+            this.groupBoxDrowMask.Location = new System.Drawing.Point(990, 292);
             this.groupBoxDrowMask.Name = "groupBoxDrowMask";
             this.groupBoxDrowMask.Size = new System.Drawing.Size(200, 151);
             this.groupBoxDrowMask.TabIndex = 8;
@@ -342,7 +345,7 @@
             this.groupBox1.Controls.Add(this.buttonSquereLine);
             this.groupBox1.Controls.Add(this.radioButtonSqLine_Yellow);
             this.groupBox1.Controls.Add(this.radioButtonSqLine_Red);
-            this.groupBox1.Location = new System.Drawing.Point(990, 405);
+            this.groupBox1.Location = new System.Drawing.Point(990, 452);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 192);
             this.groupBox1.TabIndex = 13;
@@ -778,11 +781,34 @@
             this.label8.TabIndex = 36;
             this.label8.Text = "px";
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(1021, 247);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(68, 15);
+            this.label9.TabIndex = 37;
+            this.label9.Text = "LineWidth";
+            // 
+            // numericUpDownSurroundLineWidth
+            // 
+            this.numericUpDownSurroundLineWidth.Location = new System.Drawing.Point(1100, 244);
+            this.numericUpDownSurroundLineWidth.Name = "numericUpDownSurroundLineWidth";
+            this.numericUpDownSurroundLineWidth.Size = new System.Drawing.Size(66, 22);
+            this.numericUpDownSurroundLineWidth.TabIndex = 38;
+            this.numericUpDownSurroundLineWidth.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // Form1
             // 
             this.AllowDrop = true;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1412, 952);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.numericUpDownSurroundLineWidth);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.numericUpDownOutputSize);
@@ -812,7 +838,7 @@
             this.MinimumSize = new System.Drawing.Size(1430, 999);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Easy Retouch      *Ver.2021-02-24";
+            this.Text = "Easy Retouch      *Ver.2021-03-06";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form1_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form1_DragEnter);
@@ -835,6 +861,7 @@
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOutputSize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSurroundLineWidth)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -903,6 +930,8 @@
         private System.Windows.Forms.NumericUpDown numericUpDownOutputSize;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.NumericUpDown numericUpDownSurroundLineWidth;
     }
 }
 
