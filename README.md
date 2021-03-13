@@ -44,4 +44,4 @@ This software is released under the MIT License, see LICENSE.
 ### 日本語のプロジェクト名にしてしまったため文字化けしてビルド失敗する場合があります
 
 ビルドできない場合は解凍ソフトを文字コード変換に対応したものに変更してみてください。<br>
-https://forest.watch.impress.co.jp/library/software/explzh/
+https://www.cube-soft.jp/cubeice/

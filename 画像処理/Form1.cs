@@ -221,7 +221,14 @@ namespace 画像処理
                 }
 
                 Bitmap canvas0 = FinalResize(canvas);
-                canvas0.Save(FileName + suffix + (suffix_no == 0 ? "" : suffix_no.ToString()) + ".jpg");
+                if (radioButtonOutputJPG.Checked)
+                {
+                    canvas0.Save(FileName + suffix + (suffix_no == 0 ? "" : suffix_no.ToString()) + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                }
+                else
+                {
+                    canvas0.Save(FileName + suffix + (suffix_no == 0 ? "" : suffix_no.ToString()) + ".png");
+                }
             }
         }
 

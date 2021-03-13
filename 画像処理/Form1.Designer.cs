@@ -92,6 +92,9 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.numericUpDownSurroundLineWidth = new System.Windows.Forms.NumericUpDown();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.radioButtonOutputPNG = new System.Windows.Forms.RadioButton();
+            this.radioButtonOutputJPG = new System.Windows.Forms.RadioButton();
             this.groupBoxDrowEdge.SuspendLayout();
             this.groupBoxDrowMask.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -107,6 +110,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOutputSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSurroundLineWidth)).BeginInit();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBoxFileName
@@ -802,11 +806,45 @@
             0,
             0});
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.radioButtonOutputPNG);
+            this.groupBox4.Controls.Add(this.radioButtonOutputJPG);
+            this.groupBox4.Location = new System.Drawing.Point(993, 660);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(129, 76);
+            this.groupBox4.TabIndex = 39;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Output Format";
+            // 
+            // radioButtonOutputPNG
+            // 
+            this.radioButtonOutputPNG.AutoSize = true;
+            this.radioButtonOutputPNG.Location = new System.Drawing.Point(16, 46);
+            this.radioButtonOutputPNG.Name = "radioButtonOutputPNG";
+            this.radioButtonOutputPNG.Size = new System.Drawing.Size(57, 19);
+            this.radioButtonOutputPNG.TabIndex = 1;
+            this.radioButtonOutputPNG.Text = "PNG";
+            this.radioButtonOutputPNG.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonOutputJPG
+            // 
+            this.radioButtonOutputJPG.AutoSize = true;
+            this.radioButtonOutputJPG.Checked = true;
+            this.radioButtonOutputJPG.Location = new System.Drawing.Point(16, 21);
+            this.radioButtonOutputJPG.Name = "radioButtonOutputJPG";
+            this.radioButtonOutputJPG.Size = new System.Drawing.Size(55, 19);
+            this.radioButtonOutputJPG.TabIndex = 0;
+            this.radioButtonOutputJPG.TabStop = true;
+            this.radioButtonOutputJPG.Text = "JPG";
+            this.radioButtonOutputJPG.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AllowDrop = true;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1412, 952);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.numericUpDownSurroundLineWidth);
             this.Controls.Add(this.label8);
@@ -838,7 +876,7 @@
             this.MinimumSize = new System.Drawing.Size(1430, 999);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Easy Retouch      *Ver.2021-03-06";
+            this.Text = "Easy Retouch      *Ver.2021-03-13";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form1_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form1_DragEnter);
@@ -862,6 +900,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOutputSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSurroundLineWidth)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -932,6 +972,9 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.NumericUpDown numericUpDownSurroundLineWidth;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.RadioButton radioButtonOutputPNG;
+        private System.Windows.Forms.RadioButton radioButtonOutputJPG;
     }
 }
 
