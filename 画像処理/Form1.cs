@@ -215,19 +215,32 @@ namespace 画像処理
 
                 string suffix = textBoxSuffix.Text;
                 int suffix_no = 0;
-                while (System.IO.File.Exists(FileName + suffix + (suffix_no == 0 ? "" : suffix_no.ToString()) + ".jpg"))
-                {
-                    suffix_no += 1;
-                }
+
 
                 Bitmap canvas0 = FinalResize(canvas);
                 if (radioButtonOutputJPG.Checked)
                 {
+                    while (System.IO.File.Exists(FileName + suffix + (suffix_no == 0 ? "" : suffix_no.ToString()) + ".jpg"))
+                    {
+                        suffix_no += 1;
+                    }
                     canvas0.Save(FileName + suffix + (suffix_no == 0 ? "" : suffix_no.ToString()) + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
                 }
                 else
                 {
-                    canvas0.Save(FileName + suffix + (suffix_no == 0 ? "" : suffix_no.ToString()) + ".png");
+                    while (System.IO.File.Exists(FileName + suffix + (suffix_no == 0 ? "" : suffix_no.ToString()) + ".png"))
+                    {
+                        suffix_no += 1;
+                    }
+                    if (checkBoxTransparent.Checked)
+                    {
+                        int r = (int)numericUpDownTransRed.Value;
+                        int g = (int)numericUpDownTransGreen.Value;
+                        int b = (int)numericUpDownTransBlue.Value;
+                        //近似色または近接ドットの処理は不要か？
+                        canvas0.MakeTransparent(Color.FromArgb(r, g, b));
+                    }
+                    canvas0.Save(FileName + suffix + (suffix_no == 0 ? "" : suffix_no.ToString()) + ".png", System.Drawing.Imaging.ImageFormat.Png);
                 }
             }
         }
@@ -641,6 +654,19 @@ namespace 画像処理
             if (File.Exists(textBoxFileName.Text))
             {
                 PreviewDrowPicture();
+            }
+        }
+
+        private void radioButtonOutputPNG_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonOutputPNG.Checked)
+            {
+                groupBoxTransparent.Enabled = true;
+            }
+            else
+            {
+                groupBoxTransparent.Enabled = false;
+                checkBoxTransparent.Checked = false;
             }
         }
     }

@@ -12,6 +12,7 @@
 ・保存するときに自動的に名前を付ける<br>
 ・ひとつの工程分だけ戻す<br>
 ・加工した画像をクリップボードに出力する<br>
+・PNGの透過処理をする
 といったことが出来ます。
 
 <img src="https://github.com/s51517765/EasyRetouch/blob/master/DemoMovie.gif">
@@ -31,7 +32,9 @@ C# / Visual studio
 https://s51517765.hatenadiary.jp/entry/2020/02/25/073000<br>
 https://s51517765.hatenadiary.jp/entry/2020/04/06/073000<br>
 https://s51517765.hatenadiary.jp/entry/2020/07/20/073000<br>
-https://s51517765.hatenadiary.jp/entry/2020/08/10/073000
+https://s51517765.hatenadiary.jp/entry/2020/08/10/073000<br>
+https://s51517765.hatenadiary.jp/entry/2021/03/15/073000<br>
+https://s51517765.hatenadiary.jp/entry/2021/03/08/073000
 
 ## ライセンス (License)
 

@@ -95,6 +95,15 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.radioButtonOutputPNG = new System.Windows.Forms.RadioButton();
             this.radioButtonOutputJPG = new System.Windows.Forms.RadioButton();
+            this.checkBoxTransparent = new System.Windows.Forms.CheckBox();
+            this.groupBoxTransparent = new System.Windows.Forms.GroupBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.numericUpDownTransRed = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownTransGreen = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownTransBlue = new System.Windows.Forms.NumericUpDown();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.groupBoxDrowEdge.SuspendLayout();
             this.groupBoxDrowMask.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -111,6 +120,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOutputSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSurroundLineWidth)).BeginInit();
             this.groupBox4.SuspendLayout();
+            this.groupBoxTransparent.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTransRed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTransGreen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTransBlue)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxFileName
@@ -125,7 +138,7 @@
             // 
             this.buttonSave.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonSave.ForeColor = System.Drawing.Color.Blue;
-            this.buttonSave.Location = new System.Drawing.Point(1199, 843);
+            this.buttonSave.Location = new System.Drawing.Point(1207, 851);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(169, 79);
             this.buttonSave.TabIndex = 3;
@@ -300,7 +313,7 @@
             // 
             // textBoxSuffix
             // 
-            this.textBoxSuffix.Location = new System.Drawing.Point(1198, 803);
+            this.textBoxSuffix.Location = new System.Drawing.Point(1206, 811);
             this.textBoxSuffix.Name = "textBoxSuffix";
             this.textBoxSuffix.Size = new System.Drawing.Size(100, 22);
             this.textBoxSuffix.TabIndex = 9;
@@ -309,7 +322,7 @@
             // labelSuffix
             // 
             this.labelSuffix.AutoSize = true;
-            this.labelSuffix.Location = new System.Drawing.Point(1200, 784);
+            this.labelSuffix.Location = new System.Drawing.Point(1208, 792);
             this.labelSuffix.Name = "labelSuffix";
             this.labelSuffix.Size = new System.Drawing.Size(44, 15);
             this.labelSuffix.TabIndex = 10;
@@ -742,7 +755,7 @@
             // 
             this.buttonSetImage2Clipboard.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonSetImage2Clipboard.ForeColor = System.Drawing.Color.Blue;
-            this.buttonSetImage2Clipboard.Location = new System.Drawing.Point(1025, 859);
+            this.buttonSetImage2Clipboard.Location = new System.Drawing.Point(1033, 867);
             this.buttonSetImage2Clipboard.Name = "buttonSetImage2Clipboard";
             this.buttonSetImage2Clipboard.Size = new System.Drawing.Size(138, 48);
             this.buttonSetImage2Clipboard.TabIndex = 30;
@@ -752,7 +765,7 @@
             // 
             // numericUpDownOutputSize
             // 
-            this.numericUpDownOutputSize.Location = new System.Drawing.Point(1021, 806);
+            this.numericUpDownOutputSize.Location = new System.Drawing.Point(1029, 814);
             this.numericUpDownOutputSize.Maximum = new decimal(new int[] {
             3600,
             0,
@@ -770,7 +783,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(1024, 789);
+            this.label10.Location = new System.Drawing.Point(1032, 797);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(111, 15);
             this.label10.TabIndex = 35;
@@ -779,7 +792,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(1101, 810);
+            this.label8.Location = new System.Drawing.Point(1109, 818);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(21, 15);
             this.label8.TabIndex = 36;
@@ -810,7 +823,7 @@
             // 
             this.groupBox4.Controls.Add(this.radioButtonOutputPNG);
             this.groupBox4.Controls.Add(this.radioButtonOutputJPG);
-            this.groupBox4.Location = new System.Drawing.Point(993, 660);
+            this.groupBox4.Location = new System.Drawing.Point(1151, 679);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(129, 76);
             this.groupBox4.TabIndex = 39;
@@ -826,6 +839,7 @@
             this.radioButtonOutputPNG.TabIndex = 1;
             this.radioButtonOutputPNG.Text = "PNG";
             this.radioButtonOutputPNG.UseVisualStyleBackColor = true;
+            this.radioButtonOutputPNG.CheckedChanged += new System.EventHandler(this.radioButtonOutputPNG_CheckedChanged);
             // 
             // radioButtonOutputJPG
             // 
@@ -839,11 +853,117 @@
             this.radioButtonOutputJPG.Text = "JPG";
             this.radioButtonOutputJPG.UseVisualStyleBackColor = true;
             // 
+            // checkBoxTransparent
+            // 
+            this.checkBoxTransparent.AutoSize = true;
+            this.checkBoxTransparent.Location = new System.Drawing.Point(11, 21);
+            this.checkBoxTransparent.Name = "checkBoxTransparent";
+            this.checkBoxTransparent.Size = new System.Drawing.Size(70, 19);
+            this.checkBoxTransparent.TabIndex = 41;
+            this.checkBoxTransparent.Text = "Enable";
+            this.checkBoxTransparent.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxTransparent
+            // 
+            this.groupBoxTransparent.Controls.Add(this.label13);
+            this.groupBoxTransparent.Controls.Add(this.label12);
+            this.groupBoxTransparent.Controls.Add(this.label11);
+            this.groupBoxTransparent.Controls.Add(this.numericUpDownTransBlue);
+            this.groupBoxTransparent.Controls.Add(this.numericUpDownTransGreen);
+            this.groupBoxTransparent.Controls.Add(this.numericUpDownTransRed);
+            this.groupBoxTransparent.Controls.Add(this.checkBoxTransparent);
+            this.groupBoxTransparent.Enabled = false;
+            this.groupBoxTransparent.Location = new System.Drawing.Point(990, 650);
+            this.groupBoxTransparent.Name = "groupBoxTransparent";
+            this.groupBoxTransparent.Size = new System.Drawing.Size(132, 128);
+            this.groupBoxTransparent.TabIndex = 42;
+            this.groupBoxTransparent.TabStop = false;
+            this.groupBoxTransparent.Text = "Transparent";
+            // 
+            // numericUpDownTransRed
+            // 
+            this.numericUpDownTransRed.Location = new System.Drawing.Point(45, 43);
+            this.numericUpDownTransRed.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numericUpDownTransRed.Name = "numericUpDownTransRed";
+            this.numericUpDownTransRed.Size = new System.Drawing.Size(68, 22);
+            this.numericUpDownTransRed.TabIndex = 27;
+            this.numericUpDownTransRed.Value = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDownTransGreen
+            // 
+            this.numericUpDownTransGreen.Location = new System.Drawing.Point(45, 71);
+            this.numericUpDownTransGreen.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numericUpDownTransGreen.Name = "numericUpDownTransGreen";
+            this.numericUpDownTransGreen.Size = new System.Drawing.Size(68, 22);
+            this.numericUpDownTransGreen.TabIndex = 42;
+            this.numericUpDownTransGreen.Value = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDownTransBlue
+            // 
+            this.numericUpDownTransBlue.Location = new System.Drawing.Point(45, 99);
+            this.numericUpDownTransBlue.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numericUpDownTransBlue.Name = "numericUpDownTransBlue";
+            this.numericUpDownTransBlue.Size = new System.Drawing.Size(68, 22);
+            this.numericUpDownTransBlue.TabIndex = 43;
+            this.numericUpDownTransBlue.Value = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(20, 46);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(16, 15);
+            this.label11.TabIndex = 15;
+            this.label11.Text = "R";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(20, 74);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(17, 15);
+            this.label12.TabIndex = 44;
+            this.label12.Text = "G";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(20, 102);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(17, 15);
+            this.label13.TabIndex = 45;
+            this.label13.Text = "B";
+            // 
             // Form1
             // 
             this.AllowDrop = true;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1412, 952);
+            this.Controls.Add(this.groupBoxTransparent);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.numericUpDownSurroundLineWidth);
@@ -876,7 +996,7 @@
             this.MinimumSize = new System.Drawing.Size(1430, 999);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Easy Retouch      *Ver.2021-03-13";
+            this.Text = "Easy Retouch      *Ver.2021-04-10";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form1_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form1_DragEnter);
@@ -902,6 +1022,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSurroundLineWidth)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.groupBoxTransparent.ResumeLayout(false);
+            this.groupBoxTransparent.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTransRed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTransGreen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTransBlue)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -975,6 +1100,15 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.RadioButton radioButtonOutputPNG;
         private System.Windows.Forms.RadioButton radioButtonOutputJPG;
+        private System.Windows.Forms.CheckBox checkBoxTransparent;
+        private System.Windows.Forms.GroupBox groupBoxTransparent;
+        private System.Windows.Forms.NumericUpDown numericUpDownTransBlue;
+        private System.Windows.Forms.NumericUpDown numericUpDownTransGreen;
+        private System.Windows.Forms.NumericUpDown numericUpDownTransRed;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
     }
 }
 
