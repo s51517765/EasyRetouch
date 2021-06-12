@@ -97,13 +97,15 @@
             this.radioButtonOutputJPG = new System.Windows.Forms.RadioButton();
             this.checkBoxTransparent = new System.Windows.Forms.CheckBox();
             this.groupBoxTransparent = new System.Windows.Forms.GroupBox();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.numericUpDownTransRed = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownTransGreen = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownTransBlue = new System.Windows.Forms.NumericUpDown();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.numericUpDownTransBlue = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownTransGreen = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownTransRed = new System.Windows.Forms.NumericUpDown();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.numericUpDownCutSketchDelay = new System.Windows.Forms.NumericUpDown();
+            this.label14 = new System.Windows.Forms.Label();
             this.groupBoxDrowEdge.SuspendLayout();
             this.groupBoxDrowMask.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -121,9 +123,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSurroundLineWidth)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.groupBoxTransparent.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTransRed)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTransGreen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTransBlue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTransGreen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTransRed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCutSketchDelay)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxFileName
@@ -880,18 +883,45 @@
             this.groupBoxTransparent.TabStop = false;
             this.groupBoxTransparent.Text = "Transparent";
             // 
-            // numericUpDownTransRed
+            // label13
             // 
-            this.numericUpDownTransRed.Location = new System.Drawing.Point(45, 43);
-            this.numericUpDownTransRed.Maximum = new decimal(new int[] {
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(20, 102);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(17, 15);
+            this.label13.TabIndex = 45;
+            this.label13.Text = "B";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(20, 74);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(17, 15);
+            this.label12.TabIndex = 44;
+            this.label12.Text = "G";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(20, 46);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(16, 15);
+            this.label11.TabIndex = 15;
+            this.label11.Text = "R";
+            // 
+            // numericUpDownTransBlue
+            // 
+            this.numericUpDownTransBlue.Location = new System.Drawing.Point(45, 99);
+            this.numericUpDownTransBlue.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
-            this.numericUpDownTransRed.Name = "numericUpDownTransRed";
-            this.numericUpDownTransRed.Size = new System.Drawing.Size(68, 22);
-            this.numericUpDownTransRed.TabIndex = 27;
-            this.numericUpDownTransRed.Value = new decimal(new int[] {
+            this.numericUpDownTransBlue.Name = "numericUpDownTransBlue";
+            this.numericUpDownTransBlue.Size = new System.Drawing.Size(68, 22);
+            this.numericUpDownTransBlue.TabIndex = 43;
+            this.numericUpDownTransBlue.Value = new decimal(new int[] {
             255,
             0,
             0,
@@ -914,55 +944,46 @@
             0,
             0});
             // 
-            // numericUpDownTransBlue
+            // numericUpDownTransRed
             // 
-            this.numericUpDownTransBlue.Location = new System.Drawing.Point(45, 99);
-            this.numericUpDownTransBlue.Maximum = new decimal(new int[] {
+            this.numericUpDownTransRed.Location = new System.Drawing.Point(45, 43);
+            this.numericUpDownTransRed.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
-            this.numericUpDownTransBlue.Name = "numericUpDownTransBlue";
-            this.numericUpDownTransBlue.Size = new System.Drawing.Size(68, 22);
-            this.numericUpDownTransBlue.TabIndex = 43;
-            this.numericUpDownTransBlue.Value = new decimal(new int[] {
+            this.numericUpDownTransRed.Name = "numericUpDownTransRed";
+            this.numericUpDownTransRed.Size = new System.Drawing.Size(68, 22);
+            this.numericUpDownTransRed.TabIndex = 27;
+            this.numericUpDownTransRed.Value = new decimal(new int[] {
             255,
             0,
             0,
             0});
             // 
-            // label11
+            // numericUpDownCutSketchDelay
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(20, 46);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(16, 15);
-            this.label11.TabIndex = 15;
-            this.label11.Text = "R";
+            this.numericUpDownCutSketchDelay.Location = new System.Drawing.Point(1324, 66);
+            this.numericUpDownCutSketchDelay.Name = "numericUpDownCutSketchDelay";
+            this.numericUpDownCutSketchDelay.Size = new System.Drawing.Size(68, 22);
+            this.numericUpDownCutSketchDelay.TabIndex = 43;
             // 
-            // label12
+            // label14
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(20, 74);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(17, 15);
-            this.label12.TabIndex = 44;
-            this.label12.Text = "G";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(20, 102);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(17, 15);
-            this.label13.TabIndex = 45;
-            this.label13.Text = "B";
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(1242, 69);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(80, 15);
+            this.label14.TabIndex = 26;
+            this.label14.Text = "Delay (sec)";
             // 
             // Form1
             // 
             this.AllowDrop = true;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1412, 952);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.numericUpDownCutSketchDelay);
             this.Controls.Add(this.groupBoxTransparent);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.label9);
@@ -996,7 +1017,7 @@
             this.MinimumSize = new System.Drawing.Size(1430, 999);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Easy Retouch      *Ver.2021-04-10";
+            this.Text = "Easy Retouch      *Ver.2021-06-12";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form1_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form1_DragEnter);
@@ -1024,9 +1045,10 @@
             this.groupBox4.PerformLayout();
             this.groupBoxTransparent.ResumeLayout(false);
             this.groupBoxTransparent.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTransRed)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTransGreen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTransBlue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTransGreen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTransRed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCutSketchDelay)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1109,6 +1131,8 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.NumericUpDown numericUpDownCutSketchDelay;
+        private System.Windows.Forms.Label label14;
     }
 }
 

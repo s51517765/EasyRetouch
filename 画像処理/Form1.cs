@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO;
+using System.Threading;
 
 namespace 画像処理
 
@@ -312,12 +313,9 @@ namespace 画像処理
         {
             try
             {
-                //  using System.Diagnostics;
-                var app = new ProcessStartInfo();
-                app.FileName = "SnippingToolexe";
-                app.UseShellExecute = true;
-
-                Process.Start(app);
+                this.WindowState = FormWindowState.Minimized;
+                Thread.Sleep((int)numericUpDownCutSketchDelay.Value * 1000);
+                System.Diagnostics.Process.Start("ms-screenclip:");
             }
             catch
             {
