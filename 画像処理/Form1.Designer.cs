@@ -107,6 +107,7 @@
             this.numericUpDownCutSketchDelay = new System.Windows.Forms.NumericUpDown();
             this.label14 = new System.Windows.Forms.Label();
             this.buttonTrapezoidalCorrect = new System.Windows.Forms.Button();
+            this.label_ImgSize = new System.Windows.Forms.Label();
             this.groupBoxDrowEdge.SuspendLayout();
             this.groupBoxDrowMask.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -990,11 +991,21 @@
             this.buttonTrapezoidalCorrect.UseVisualStyleBackColor = true;
             this.buttonTrapezoidalCorrect.Click += new System.EventHandler(this.buttonTrapezoidalCorrect_Click);
             // 
+            // label_ImgSize
+            // 
+            this.label_ImgSize.AutoSize = true;
+            this.label_ImgSize.Location = new System.Drawing.Point(920, 930);
+            this.label_ImgSize.Name = "label_ImgSize";
+            this.label_ImgSize.Size = new System.Drawing.Size(96, 15);
+            this.label_ImgSize.TabIndex = 45;
+            this.label_ImgSize.Text = "width x height";
+            // 
             // Form1
             // 
             this.AllowDrop = true;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1412, 952);
+            this.Controls.Add(this.label_ImgSize);
             this.Controls.Add(this.buttonTrapezoidalCorrect);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.numericUpDownCutSketchDelay);
@@ -1148,6 +1159,7 @@
         private System.Windows.Forms.NumericUpDown numericUpDownCutSketchDelay;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button buttonTrapezoidalCorrect;
+        private System.Windows.Forms.Label label_ImgSize;
     }
 }
 

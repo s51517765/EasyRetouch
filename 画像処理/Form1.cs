@@ -89,6 +89,13 @@ namespace 画像処理
             {
                 //pass
             }
+            update_LabelImgSize();
+        }
+        private void update_LabelImgSize()
+        {
+            if (isPictureSmall) label_ImgSize.Text = (FinalPictureWidth / 4).ToString("f0") + " x " + (FinalPictureHeight / 4).ToString("f0");
+            else if (reSizeRate>1)label_ImgSize.Text = (FinalPictureWidth / reSizeRate).ToString("f0") + " x " + (FinalPictureHeight / reSizeRate).ToString("f0");
+            else label_ImgSize.Text = FinalPictureWidth.ToString("f0") + " x " + FinalPictureHeight.ToString("f0");
         }
 
         private void PreviewDrowPicture(Image defImg = null)
@@ -154,6 +161,7 @@ namespace 画像処理
             {
                 //pass
             }
+            update_LabelImgSize();
         }
         private void fillOutOfCanvas()
         {   //ImageオブジェクトのGraphicsオブジェクトを作成する
@@ -350,6 +358,7 @@ namespace 画像処理
             g.DrawImage(canvas, desRect, srcRect, GraphicsUnit.Pixel);
 
             fillOutOfCanvas();
+            update_LabelImgSize();
         }
 
         private void buttonFileOpen_Click(object sender, EventArgs e)
@@ -575,6 +584,7 @@ namespace 画像処理
             g.DrawImage(canvas, desRect, srcRect, GraphicsUnit.Pixel);
             canvas2 = new Bitmap(canvas, pictureBox2Width, pictureBox2Height);
             fillOutOfCanvas();
+            update_LabelImgSize();
         }
 
         private void buttonRotate270deg_Click(object sender, EventArgs e)
@@ -592,6 +602,7 @@ namespace 画像処理
             g.DrawImage(canvas, desRect, srcRect, GraphicsUnit.Pixel);
 
             fillOutOfCanvas();
+            update_LabelImgSize();
         }
 
         private void buttonFlipY_Click(object sender, EventArgs e)
