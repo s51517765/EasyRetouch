@@ -11,6 +11,9 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO;
 using System.Threading;
+using OpenCvSharp;
+using Size = System.Drawing.Size;
+using System.Windows.Media.Imaging;
 
 namespace 画像処理
 
@@ -33,13 +36,13 @@ namespace 画像処理
         const int pictureBoxHeight = 3600;
         const int pictureBox2Width = 900;
         const int pictureBox2Height = 900;
-        int pictureBoxPreviewRate = pictureBoxWidth / pictureBox2Width;
+        public int pictureBoxPreviewRate = pictureBoxWidth / pictureBox2Width;
         int FinalPictureWidth = pictureBoxWidth;
         int FinalPictureHeight = pictureBoxHeight;
         int previousPictureWidth;
         int previousPictureHeight;
         float reSizeRate;
-        bool isPicureSmall = false;
+        bool isPictureSmall = false;
 
         //出力画像用Imageオブジェクトを作成する
         Bitmap canvas = new Bitmap(pictureBoxWidth, pictureBoxHeight);
@@ -120,13 +123,13 @@ namespace 画像処理
                 //画像がPreviewエリアより小さいとき
                 if (Math.Max(img.Width, img.Height) < canvas2.Height)
                 {
-                    isPicureSmall = true;
+                    isPictureSmall = true;
                     FinalPictureHeight = img.Height * pictureBoxPreviewRate;
                     FinalPictureWidth = img.Width * pictureBoxPreviewRate;
                 }
                 else
                 {
-                    isPicureSmall = false;
+                    isPictureSmall = false;
                     float w = (float)img.Width;
                     float h = (float)img.Height;
                     FinalPictureHeight = (int)(h * reSizeRate);
@@ -292,6 +295,7 @@ namespace 画像処理
             buttonDrowMask.Enabled = false;
             buttonSquereLine.Enabled = true;
             buttonBlur.Enabled = true;
+            buttonTrapezoidalCorrect.Enabled = true;
         }
 
         private void buttonSquereLine_Click(object sender, EventArgs e)
@@ -300,6 +304,7 @@ namespace 画像処理
             buttonSquereLine.Enabled = false;
             buttonDrowMask.Enabled = true;
             buttonBlur.Enabled = true;
+            buttonTrapezoidalCorrect.Enabled = true;
         }
         private void buttonBlur_Click(object sender, EventArgs e)
         {
@@ -307,6 +312,7 @@ namespace 画像処理
             buttonBlur.Enabled = false;
             buttonSquereLine.Enabled = true;
             buttonDrowMask.Enabled = true;
+            buttonTrapezoidalCorrect.Enabled = true;
         }
 
         private void buttonSnappingTool_Click(object sender, EventArgs e)
@@ -360,8 +366,8 @@ namespace 画像処理
         }
 
         // MouseMove -> MouseUpでつかう
-        Point startPoint;
-        Point endPoint;
+        System.Drawing.Point startPoint;
+        System.Drawing.Point endPoint;
         int size_x = 0;
         int size_y = 0;
         Pen p;
@@ -473,7 +479,6 @@ namespace 画像処理
                 else color = Color.FromArgb(0, 0, 0);
                 p = new Pen(color, (float)numericUpDownLineWidth.Value * pictureBoxPreviewRate);
                 g.DrawRectangle(p, Math.Min(startPoint.X * pictureBoxPreviewRate, endPoint.X * pictureBoxPreviewRate), Math.Min(startPoint.Y * pictureBoxPreviewRate, endPoint.Y * pictureBoxPreviewRate), size_x * pictureBoxPreviewRate, size_y * pictureBoxPreviewRate);
-
             }
             else if (FlagMask == 2)
             {
@@ -524,8 +529,11 @@ namespace 画像処理
                     }
                 }
             }
-            canvas2 = new Bitmap(canvas, pictureBox2Width, pictureBox2Height);
-            pictureBox2.Image = canvas2;
+            if (FlagMask != 0)
+            {
+                canvas2 = new Bitmap(canvas, pictureBox2Width, pictureBox2Height);
+                pictureBox2.Image = canvas2;
+            }
         }
 
         private void buttonTrimingValueReset_Click(object sender, EventArgs e)
@@ -628,7 +636,7 @@ namespace 画像処理
             //画像の一部を描画する
             g0.DrawImage(canvas, desRect, srcRect, GraphicsUnit.Pixel);
 
-            if (isPicureSmall)
+            if (isPictureSmall) //アルゴリズムとして失敗したかも
             {
                 canvas0 = new Bitmap(canvas0, (int)(FinalPictureWidth / pictureBoxPreviewRate), (int)(FinalPictureHeight / pictureBoxPreviewRate));
             }
@@ -666,6 +674,125 @@ namespace 画像処理
                 groupBoxTransparent.Enabled = false;
                 checkBoxTransparent.Checked = false;
             }
+        }
+
+        System.Drawing.Point px0;   //直したい台形の座標
+        System.Drawing.Point px1;
+        System.Drawing.Point px2;
+        System.Drawing.Point px3;
+
+        int countTrapezoidal = -1;
+
+        private void buttonTrapezoidalCorrect_Click(object sender, EventArgs e)
+        {
+            countTrapezoidal = 0;
+            buttonDrowMask.Enabled = true;
+            buttonSquereLine.Enabled = true;
+            buttonBlur.Enabled = true;
+            buttonTrapezoidalCorrect.Enabled = false;
+        }
+
+        private void point_normarize(ref System.Drawing.Point px0, ref System.Drawing.Point px1, ref System.Drawing.Point px2, ref System.Drawing.Point px3)
+        {
+            System.Drawing.Point[] p = { px0, px1, px2, px3 };
+
+            //左上の点を求める
+            int[] x_y = { px0.X + px0.Y, px1.X + px1.Y, px2.X + px2.Y, px3.X + px3.Y };
+
+            int tmp = 100000;
+            int idx = 0;
+            for (int i = 0; i < 4; i++)
+            {
+                if (x_y[i] < tmp)
+                {
+                    tmp = x_y[i];
+                    idx = i;
+                }
+            }
+            //左周りか右回りか
+            int[] y = { px0.Y, px1.Y, px2.Y, px3.Y };
+
+            if (y[(idx + 1) % 4] - y[idx] > y[(idx + 3) % 4] - y[idx])
+            {
+                //左回り
+                px0 = p[idx];
+                px1 = p[(idx + 1) % 4];
+                px2 = p[(idx + 2) % 4];
+                px3 = p[(idx + 3) % 4];
+            }
+            else
+            {
+                //右回り
+                px0 = p[idx];
+                px1 = p[(idx + 3) % 4];
+                px2 = p[(idx + 2) % 4];
+                px3 = p[(idx + 1) % 4];
+            }
+        }
+
+        private void TrapezoidalCorrect()
+        {
+            point_normarize(ref px0, ref px1, ref px2, ref px3);
+
+            int aveWidth = (px2.X + px3.X - px0.X - px1.X) / 2;
+            int aveHight = (px1.Y + px2.Y - px3.Y - px0.Y) / 2;
+
+            trapezoidal trapezoidal = new trapezoidal();
+            double rate = 1;
+
+            canvas.Save("input.jpg");
+            Bitmap canvas_tmp = trapezoidal.main(isPictureSmall, canvas, reSizeRate, px0, px1, px2, px3, ref rate, FinalPictureWidth, FinalPictureHeight);
+            g = Graphics.FromImage(canvas);
+
+            FinalPictureWidth = (int)(aveWidth * rate * pictureBoxPreviewRate); //元の画像の切り抜いた部分の拡大率を保持
+            FinalPictureHeight = (int)(aveHight * rate * pictureBoxPreviewRate);
+
+            canvas_tmp = new Bitmap(canvas_tmp, FinalPictureWidth, FinalPictureHeight);
+            //切り取る部分の範囲を決定する、開始位置、大きさX*Y
+            Rectangle srcRect = new Rectangle(0, 0, FinalPictureWidth, FinalPictureHeight);
+            //描画する部分の範囲。位置(0,0)、大きさX*Yで描画する
+            Rectangle desRect = new Rectangle(0, 0, FinalPictureWidth, FinalPictureHeight);
+            //画像の一部を描画する
+            g.DrawImage(canvas_tmp, desRect, srcRect, GraphicsUnit.Pixel);
+
+            fillOutOfCanvas();
+            countTrapezoidal = -1;
+            buttonTrapezoidalCorrect.Enabled = true;
+        }
+
+        private void pictureBox2_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (countTrapezoidal == -1) return;
+
+            //Penオブジェクトの作成
+            Color color = Color.FromArgb(250, 100, 150);
+            p = new Pen(color, 4);
+            if (countTrapezoidal == 0)
+            {
+                px0 = new System.Drawing.Point(e.Location.X, e.Location.Y);
+                g2.DrawLine(p, px0, px0);
+            }
+            else if (countTrapezoidal == 1)
+            {
+                px1 = new System.Drawing.Point(e.Location.X, e.Location.Y);
+                g2.DrawLine(p, px0, px1);
+            }
+            else if (countTrapezoidal == 2)
+            {
+                px2 = new System.Drawing.Point(e.Location.X, e.Location.Y);
+                g2.DrawLine(p, px1, px2);
+            }
+            else if (countTrapezoidal == 3)
+            {
+                px3 = new System.Drawing.Point(e.Location.X, e.Location.Y);
+                g2.DrawLine(p, px2, px3);
+                g2.DrawLine(p, px3, px0);
+                pictureBox2.Image = canvas2;
+                Application.DoEvents();
+                TrapezoidalCorrect();
+            }
+            pictureBox2.Image = canvas2;
+            countTrapezoidal += 1;
         }
     }
 }

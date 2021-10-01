@@ -13,6 +13,7 @@
 ・ひとつの工程分だけ戻す<br>
 ・加工した画像をクリップボードに出力する<br>
 ・PNGの透過処理をする
+・台形補正
 といったことが出来ます。
 
 <img src="https://github.com/s51517765/EasyRetouch/blob/master/DemoMovie.gif">

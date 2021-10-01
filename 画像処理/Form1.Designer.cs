@@ -106,6 +106,7 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.numericUpDownCutSketchDelay = new System.Windows.Forms.NumericUpDown();
             this.label14 = new System.Windows.Forms.Label();
+            this.buttonTrapezoidalCorrect = new System.Windows.Forms.Button();
             this.groupBoxDrowEdge.SuspendLayout();
             this.groupBoxDrowMask.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -141,7 +142,7 @@
             // 
             this.buttonSave.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonSave.ForeColor = System.Drawing.Color.Blue;
-            this.buttonSave.Location = new System.Drawing.Point(1207, 851);
+            this.buttonSave.Location = new System.Drawing.Point(1210, 863);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(169, 79);
             this.buttonSave.TabIndex = 3;
@@ -316,7 +317,7 @@
             // 
             // textBoxSuffix
             // 
-            this.textBoxSuffix.Location = new System.Drawing.Point(1206, 811);
+            this.textBoxSuffix.Location = new System.Drawing.Point(1210, 831);
             this.textBoxSuffix.Name = "textBoxSuffix";
             this.textBoxSuffix.Size = new System.Drawing.Size(100, 22);
             this.textBoxSuffix.TabIndex = 9;
@@ -325,7 +326,7 @@
             // labelSuffix
             // 
             this.labelSuffix.AutoSize = true;
-            this.labelSuffix.Location = new System.Drawing.Point(1208, 792);
+            this.labelSuffix.Location = new System.Drawing.Point(1210, 812);
             this.labelSuffix.Name = "labelSuffix";
             this.labelSuffix.Size = new System.Drawing.Size(44, 15);
             this.labelSuffix.TabIndex = 10;
@@ -750,6 +751,7 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox2_MouseClick);
             this.pictureBox2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox2_MouseDown);
             this.pictureBox2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox2_MouseMove);
             this.pictureBox2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox2_MouseUp);
@@ -758,7 +760,7 @@
             // 
             this.buttonSetImage2Clipboard.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonSetImage2Clipboard.ForeColor = System.Drawing.Color.Blue;
-            this.buttonSetImage2Clipboard.Location = new System.Drawing.Point(1033, 867);
+            this.buttonSetImage2Clipboard.Location = new System.Drawing.Point(1027, 883);
             this.buttonSetImage2Clipboard.Name = "buttonSetImage2Clipboard";
             this.buttonSetImage2Clipboard.Size = new System.Drawing.Size(138, 48);
             this.buttonSetImage2Clipboard.TabIndex = 30;
@@ -768,7 +770,7 @@
             // 
             // numericUpDownOutputSize
             // 
-            this.numericUpDownOutputSize.Location = new System.Drawing.Point(1029, 814);
+            this.numericUpDownOutputSize.Location = new System.Drawing.Point(1210, 784);
             this.numericUpDownOutputSize.Maximum = new decimal(new int[] {
             3600,
             0,
@@ -786,7 +788,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(1032, 797);
+            this.label10.Location = new System.Drawing.Point(1210, 763);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(111, 15);
             this.label10.TabIndex = 35;
@@ -795,7 +797,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(1109, 818);
+            this.label8.Location = new System.Drawing.Point(1290, 788);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(21, 15);
             this.label8.TabIndex = 36;
@@ -977,11 +979,23 @@
             this.label14.TabIndex = 26;
             this.label14.Text = "Delay (sec)";
             // 
+            // buttonTrapezoidalCorrect
+            // 
+            this.buttonTrapezoidalCorrect.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonTrapezoidalCorrect.Location = new System.Drawing.Point(1026, 788);
+            this.buttonTrapezoidalCorrect.Name = "buttonTrapezoidalCorrect";
+            this.buttonTrapezoidalCorrect.Size = new System.Drawing.Size(127, 65);
+            this.buttonTrapezoidalCorrect.TabIndex = 44;
+            this.buttonTrapezoidalCorrect.Text = "Trapezoidal Correct";
+            this.buttonTrapezoidalCorrect.UseVisualStyleBackColor = true;
+            this.buttonTrapezoidalCorrect.Click += new System.EventHandler(this.buttonTrapezoidalCorrect_Click);
+            // 
             // Form1
             // 
             this.AllowDrop = true;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1412, 952);
+            this.Controls.Add(this.buttonTrapezoidalCorrect);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.numericUpDownCutSketchDelay);
             this.Controls.Add(this.groupBoxTransparent);
@@ -1017,7 +1031,7 @@
             this.MinimumSize = new System.Drawing.Size(1430, 999);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Easy Retouch      *Ver.2021-06-12";
+            this.Text = "Easy Retouch      *Ver.2021-10-01";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form1_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form1_DragEnter);
@@ -1133,6 +1147,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.NumericUpDown numericUpDownCutSketchDelay;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button buttonTrapezoidalCorrect;
     }
 }
 
