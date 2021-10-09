@@ -766,7 +766,7 @@ namespace 画像処理
             trapezoidal trapezoidal = new trapezoidal();
             double rate = 1;
 
-            canvas.Save("input.jpg");
+            //canvas.Save("input.jpg"); //debug用
             Bitmap canvas_tmp = trapezoidal.main(isPictureSmall, canvas, reSizeRate, px0, px1, px2, px3, ref rate, FinalPictureWidth, FinalPictureHeight);
             g = Graphics.FromImage(canvas);
 

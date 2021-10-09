@@ -131,7 +131,7 @@ namespace 画像処理
             InterpolationFlags OIFLiner = InterpolationFlags.Linear;
             BorderTypes OBTDefault = BorderTypes.Default;
             Cv2.WarpPerspective(src_img, dst_img, map_matrix, mysize, OIFLiner, OBTDefault);
-            dst_img.SaveImage("trapezoidal.jpg");
+            //dst_img.SaveImage("trapezoidal.jpg"); //debug用
             return dst_img.ToBitmap();
         }
     }
