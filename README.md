@@ -35,7 +35,9 @@ https://s51517765.hatenadiary.jp/entry/2020/04/06/073000<br>
 https://s51517765.hatenadiary.jp/entry/2020/07/20/073000<br>
 https://s51517765.hatenadiary.jp/entry/2020/08/10/073000<br>
 https://s51517765.hatenadiary.jp/entry/2021/03/15/073000<br>
-https://s51517765.hatenadiary.jp/entry/2021/03/08/073000
+https://s51517765.hatenadiary.jp/entry/2021/03/08/073000<br>
+https://s51517765.hatenadiary.jp/entry/2021/08/09/073000<br>
+https://s51517765.hatenadiary.jp/entry/2021/10/04/073000<br>
 
 ## ライセンス (License)
 

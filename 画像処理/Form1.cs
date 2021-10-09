@@ -28,7 +28,22 @@ namespace 画像処理
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            //必要dllの有無チェック
+            string[] dllList = { "OpenCvSharp.dll", "OpenCvSharp.Extensions.dll" , @"dll\x86\opencv_videoio_ffmpeg453.dll", @"dll\x86\OpenCvSharpExtern.dll", @"dll\x64\opencv_videoio_ffmpeg453_64.dll", @"dll\x64\OpenCvSharpExtern.dll" };
+            string[] tmp = new string[dllList.Length];
+            int i = 0;
+            foreach (string file in dllList)
+            {
+                if (!System.IO.File.Exists(file))
+                {
+                    tmp[i] = file;
+                    i++;
+                }
+            }
+            if (i != 0)
+            {
+                MessageBox.Show(String.Join(System.Environment.NewLine, tmp) + "is not find. This is the file needed to run!");
+            }
         }
 
         //using System.Drawing;
@@ -94,7 +109,7 @@ namespace 画像処理
         private void update_LabelImgSize()
         {
             if (isPictureSmall) label_ImgSize.Text = (FinalPictureWidth / 4).ToString("f0") + " x " + (FinalPictureHeight / 4).ToString("f0");
-            else if (reSizeRate>1)label_ImgSize.Text = (FinalPictureWidth / reSizeRate).ToString("f0") + " x " + (FinalPictureHeight / reSizeRate).ToString("f0");
+            else if (reSizeRate > 1) label_ImgSize.Text = (FinalPictureWidth / reSizeRate).ToString("f0") + " x " + (FinalPictureHeight / reSizeRate).ToString("f0");
             else label_ImgSize.Text = FinalPictureWidth.ToString("f0") + " x " + FinalPictureHeight.ToString("f0");
         }
 
