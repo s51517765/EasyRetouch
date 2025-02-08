@@ -29,7 +29,7 @@ namespace 画像処理
         private void Form1_Load(object sender, EventArgs e)
         {
             //必要dllの有無チェック
-            string[] dllList = { "OpenCvSharp.dll", "OpenCvSharp.Extensions.dll" , @"dll\x86\opencv_videoio_ffmpeg453.dll", @"dll\x86\OpenCvSharpExtern.dll", @"dll\x64\opencv_videoio_ffmpeg453_64.dll", @"dll\x64\OpenCvSharpExtern.dll" };
+            string[] dllList = { "OpenCvSharp.dll", "OpenCvSharp.Extensions.dll", @"dll\x86\opencv_videoio_ffmpeg453.dll", @"dll\x86\OpenCvSharpExtern.dll", @"dll\x64\opencv_videoio_ffmpeg453_64.dll", @"dll\x64\OpenCvSharpExtern.dll" };
             string[] tmp = new string[dllList.Length];
             int i = 0;
             foreach (string file in dllList)
@@ -42,6 +42,7 @@ namespace 画像処理
             }
             if (i != 0)
             {
+                // ***** Win11 要対応 *******
                 MessageBox.Show(String.Join(System.Environment.NewLine, tmp) + "is not find. This is the file needed to run!");
             }
         }

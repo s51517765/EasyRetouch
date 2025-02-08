@@ -135,7 +135,7 @@
             // 
             this.textBoxFileName.Location = new System.Drawing.Point(113, 15);
             this.textBoxFileName.Name = "textBoxFileName";
-            this.textBoxFileName.Size = new System.Drawing.Size(900, 22);
+            this.textBoxFileName.Size = new System.Drawing.Size(900, 19);
             this.textBoxFileName.TabIndex = 0;
             this.textBoxFileName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxFileName_KeyDown);
             // 
@@ -167,7 +167,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(27, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 15);
+            this.label1.Size = new System.Drawing.Size(59, 12);
             this.label1.TabIndex = 5;
             this.label1.Text = "Souce File";
             // 
@@ -202,7 +202,7 @@
             this.radioButtonDrowEdge_Blue.AutoSize = true;
             this.radioButtonDrowEdge_Blue.Location = new System.Drawing.Point(109, 96);
             this.radioButtonDrowEdge_Blue.Name = "radioButtonDrowEdge_Blue";
-            this.radioButtonDrowEdge_Blue.Size = new System.Drawing.Size(57, 19);
+            this.radioButtonDrowEdge_Blue.Size = new System.Drawing.Size(46, 16);
             this.radioButtonDrowEdge_Blue.TabIndex = 3;
             this.radioButtonDrowEdge_Blue.Text = "Blue";
             this.radioButtonDrowEdge_Blue.UseVisualStyleBackColor = true;
@@ -212,7 +212,7 @@
             this.radioButtonDrowEdge_Black.AutoSize = true;
             this.radioButtonDrowEdge_Black.Location = new System.Drawing.Point(109, 121);
             this.radioButtonDrowEdge_Black.Name = "radioButtonDrowEdge_Black";
-            this.radioButtonDrowEdge_Black.Size = new System.Drawing.Size(63, 19);
+            this.radioButtonDrowEdge_Black.Size = new System.Drawing.Size(52, 16);
             this.radioButtonDrowEdge_Black.TabIndex = 5;
             this.radioButtonDrowEdge_Black.Text = "Black";
             this.radioButtonDrowEdge_Black.UseVisualStyleBackColor = true;
@@ -222,7 +222,7 @@
             this.radioButtonDrowEdge_Green.AutoSize = true;
             this.radioButtonDrowEdge_Green.Location = new System.Drawing.Point(109, 71);
             this.radioButtonDrowEdge_Green.Name = "radioButtonDrowEdge_Green";
-            this.radioButtonDrowEdge_Green.Size = new System.Drawing.Size(67, 19);
+            this.radioButtonDrowEdge_Green.Size = new System.Drawing.Size(53, 16);
             this.radioButtonDrowEdge_Green.TabIndex = 2;
             this.radioButtonDrowEdge_Green.Text = "Green";
             this.radioButtonDrowEdge_Green.UseVisualStyleBackColor = true;
@@ -232,7 +232,7 @@
             this.radioButtonDrowEdge_Yellow.AutoSize = true;
             this.radioButtonDrowEdge_Yellow.Location = new System.Drawing.Point(109, 46);
             this.radioButtonDrowEdge_Yellow.Name = "radioButtonDrowEdge_Yellow";
-            this.radioButtonDrowEdge_Yellow.Size = new System.Drawing.Size(69, 19);
+            this.radioButtonDrowEdge_Yellow.Size = new System.Drawing.Size(56, 16);
             this.radioButtonDrowEdge_Yellow.TabIndex = 1;
             this.radioButtonDrowEdge_Yellow.Text = "Yellow";
             this.radioButtonDrowEdge_Yellow.UseVisualStyleBackColor = true;
@@ -243,7 +243,7 @@
             this.radioButtonDrowEdge_Red.Checked = true;
             this.radioButtonDrowEdge_Red.Location = new System.Drawing.Point(109, 21);
             this.radioButtonDrowEdge_Red.Name = "radioButtonDrowEdge_Red";
-            this.radioButtonDrowEdge_Red.Size = new System.Drawing.Size(52, 19);
+            this.radioButtonDrowEdge_Red.Size = new System.Drawing.Size(43, 16);
             this.radioButtonDrowEdge_Red.TabIndex = 0;
             this.radioButtonDrowEdge_Red.TabStop = true;
             this.radioButtonDrowEdge_Red.Text = "Red";
@@ -269,7 +269,7 @@
             this.radioButtonDrowMask_Black.AutoSize = true;
             this.radioButtonDrowMask_Black.Location = new System.Drawing.Point(109, 121);
             this.radioButtonDrowMask_Black.Name = "radioButtonDrowMask_Black";
-            this.radioButtonDrowMask_Black.Size = new System.Drawing.Size(63, 19);
+            this.radioButtonDrowMask_Black.Size = new System.Drawing.Size(52, 16);
             this.radioButtonDrowMask_Black.TabIndex = 9;
             this.radioButtonDrowMask_Black.Text = "Black";
             this.radioButtonDrowMask_Black.UseVisualStyleBackColor = true;
@@ -279,7 +279,7 @@
             this.radioButtonDrowMask_Blue.AutoSize = true;
             this.radioButtonDrowMask_Blue.Location = new System.Drawing.Point(109, 96);
             this.radioButtonDrowMask_Blue.Name = "radioButtonDrowMask_Blue";
-            this.radioButtonDrowMask_Blue.Size = new System.Drawing.Size(57, 19);
+            this.radioButtonDrowMask_Blue.Size = new System.Drawing.Size(46, 16);
             this.radioButtonDrowMask_Blue.TabIndex = 3;
             this.radioButtonDrowMask_Blue.Text = "Blue";
             this.radioButtonDrowMask_Blue.UseVisualStyleBackColor = true;
@@ -289,7 +289,7 @@
             this.radioButtonDrowMask_Green.AutoSize = true;
             this.radioButtonDrowMask_Green.Location = new System.Drawing.Point(109, 71);
             this.radioButtonDrowMask_Green.Name = "radioButtonDrowMask_Green";
-            this.radioButtonDrowMask_Green.Size = new System.Drawing.Size(67, 19);
+            this.radioButtonDrowMask_Green.Size = new System.Drawing.Size(53, 16);
             this.radioButtonDrowMask_Green.TabIndex = 2;
             this.radioButtonDrowMask_Green.Text = "Green";
             this.radioButtonDrowMask_Green.UseVisualStyleBackColor = true;
@@ -300,7 +300,7 @@
             this.radioButtonDrowMask_Yellow.Checked = true;
             this.radioButtonDrowMask_Yellow.Location = new System.Drawing.Point(109, 46);
             this.radioButtonDrowMask_Yellow.Name = "radioButtonDrowMask_Yellow";
-            this.radioButtonDrowMask_Yellow.Size = new System.Drawing.Size(69, 19);
+            this.radioButtonDrowMask_Yellow.Size = new System.Drawing.Size(56, 16);
             this.radioButtonDrowMask_Yellow.TabIndex = 1;
             this.radioButtonDrowMask_Yellow.TabStop = true;
             this.radioButtonDrowMask_Yellow.Text = "Yellow";
@@ -311,7 +311,7 @@
             this.radioButtonDrowMask_Red.AutoSize = true;
             this.radioButtonDrowMask_Red.Location = new System.Drawing.Point(109, 21);
             this.radioButtonDrowMask_Red.Name = "radioButtonDrowMask_Red";
-            this.radioButtonDrowMask_Red.Size = new System.Drawing.Size(52, 19);
+            this.radioButtonDrowMask_Red.Size = new System.Drawing.Size(43, 16);
             this.radioButtonDrowMask_Red.TabIndex = 0;
             this.radioButtonDrowMask_Red.Text = "Red";
             this.radioButtonDrowMask_Red.UseVisualStyleBackColor = true;
@@ -320,7 +320,7 @@
             // 
             this.textBoxSuffix.Location = new System.Drawing.Point(1210, 831);
             this.textBoxSuffix.Name = "textBoxSuffix";
-            this.textBoxSuffix.Size = new System.Drawing.Size(100, 22);
+            this.textBoxSuffix.Size = new System.Drawing.Size(100, 19);
             this.textBoxSuffix.TabIndex = 9;
             this.textBoxSuffix.Text = "_retouch_";
             // 
@@ -329,7 +329,7 @@
             this.labelSuffix.AutoSize = true;
             this.labelSuffix.Location = new System.Drawing.Point(1210, 812);
             this.labelSuffix.Name = "labelSuffix";
-            this.labelSuffix.Size = new System.Drawing.Size(44, 15);
+            this.labelSuffix.Size = new System.Drawing.Size(35, 12);
             this.labelSuffix.TabIndex = 10;
             this.labelSuffix.Text = "Suffix";
             // 
@@ -341,7 +341,7 @@
             this.labelStartMsg1.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.labelStartMsg1.Location = new System.Drawing.Point(26, 177);
             this.labelStartMsg1.Name = "labelStartMsg1";
-            this.labelStartMsg1.Size = new System.Drawing.Size(872, 60);
+            this.labelStartMsg1.Size = new System.Drawing.Size(700, 48);
             this.labelStartMsg1.TabIndex = 11;
             this.labelStartMsg1.Text = "画像ファイルをドラッグドロップまたは、";
             // 
@@ -353,7 +353,7 @@
             this.labelStartMsg2.ForeColor = System.Drawing.SystemColors.AppWorkspace;
             this.labelStartMsg2.Location = new System.Drawing.Point(35, 349);
             this.labelStartMsg2.Name = "labelStartMsg2";
-            this.labelStartMsg2.Size = new System.Drawing.Size(641, 60);
+            this.labelStartMsg2.Size = new System.Drawing.Size(513, 48);
             this.labelStartMsg2.TabIndex = 12;
             this.labelStartMsg2.Text = "Drag and Drop image file";
             // 
@@ -379,7 +379,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(32, 157);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 15);
+            this.label2.Size = new System.Drawing.Size(54, 12);
             this.label2.TabIndex = 14;
             this.label2.Text = "LineWidth";
             // 
@@ -387,7 +387,7 @@
             // 
             this.numericUpDownLineWidth.Location = new System.Drawing.Point(111, 154);
             this.numericUpDownLineWidth.Name = "numericUpDownLineWidth";
-            this.numericUpDownLineWidth.Size = new System.Drawing.Size(66, 22);
+            this.numericUpDownLineWidth.Size = new System.Drawing.Size(66, 19);
             this.numericUpDownLineWidth.TabIndex = 14;
             this.numericUpDownLineWidth.Value = new decimal(new int[] {
             2,
@@ -400,7 +400,7 @@
             this.radioButtonSqLine_Black.AutoSize = true;
             this.radioButtonSqLine_Black.Location = new System.Drawing.Point(109, 121);
             this.radioButtonSqLine_Black.Name = "radioButtonSqLine_Black";
-            this.radioButtonSqLine_Black.Size = new System.Drawing.Size(63, 19);
+            this.radioButtonSqLine_Black.Size = new System.Drawing.Size(52, 16);
             this.radioButtonSqLine_Black.TabIndex = 9;
             this.radioButtonSqLine_Black.Text = "Black";
             this.radioButtonSqLine_Black.UseVisualStyleBackColor = true;
@@ -410,7 +410,7 @@
             this.radioButtonSqLine_Blue.AutoSize = true;
             this.radioButtonSqLine_Blue.Location = new System.Drawing.Point(109, 96);
             this.radioButtonSqLine_Blue.Name = "radioButtonSqLine_Blue";
-            this.radioButtonSqLine_Blue.Size = new System.Drawing.Size(57, 19);
+            this.radioButtonSqLine_Blue.Size = new System.Drawing.Size(46, 16);
             this.radioButtonSqLine_Blue.TabIndex = 3;
             this.radioButtonSqLine_Blue.Text = "Blue";
             this.radioButtonSqLine_Blue.UseVisualStyleBackColor = true;
@@ -420,7 +420,7 @@
             this.radioButtonSqLine_Green.AutoSize = true;
             this.radioButtonSqLine_Green.Location = new System.Drawing.Point(109, 71);
             this.radioButtonSqLine_Green.Name = "radioButtonSqLine_Green";
-            this.radioButtonSqLine_Green.Size = new System.Drawing.Size(67, 19);
+            this.radioButtonSqLine_Green.Size = new System.Drawing.Size(53, 16);
             this.radioButtonSqLine_Green.TabIndex = 2;
             this.radioButtonSqLine_Green.Text = "Green";
             this.radioButtonSqLine_Green.UseVisualStyleBackColor = true;
@@ -441,7 +441,7 @@
             this.radioButtonSqLine_Yellow.AutoSize = true;
             this.radioButtonSqLine_Yellow.Location = new System.Drawing.Point(109, 46);
             this.radioButtonSqLine_Yellow.Name = "radioButtonSqLine_Yellow";
-            this.radioButtonSqLine_Yellow.Size = new System.Drawing.Size(69, 19);
+            this.radioButtonSqLine_Yellow.Size = new System.Drawing.Size(56, 16);
             this.radioButtonSqLine_Yellow.TabIndex = 1;
             this.radioButtonSqLine_Yellow.Text = "Yellow";
             this.radioButtonSqLine_Yellow.UseVisualStyleBackColor = true;
@@ -452,7 +452,7 @@
             this.radioButtonSqLine_Red.Checked = true;
             this.radioButtonSqLine_Red.Location = new System.Drawing.Point(109, 21);
             this.radioButtonSqLine_Red.Name = "radioButtonSqLine_Red";
-            this.radioButtonSqLine_Red.Size = new System.Drawing.Size(52, 19);
+            this.radioButtonSqLine_Red.Size = new System.Drawing.Size(43, 16);
             this.radioButtonSqLine_Red.TabIndex = 0;
             this.radioButtonSqLine_Red.TabStop = true;
             this.radioButtonSqLine_Red.Text = "Red";
@@ -477,7 +477,7 @@
             this.labelStartMsg4.ForeColor = System.Drawing.SystemColors.AppWorkspace;
             this.labelStartMsg4.Location = new System.Drawing.Point(35, 412);
             this.labelStartMsg4.Name = "labelStartMsg4";
-            this.labelStartMsg4.Size = new System.Drawing.Size(795, 60);
+            this.labelStartMsg4.Size = new System.Drawing.Size(638, 48);
             this.labelStartMsg4.TabIndex = 15;
             this.labelStartMsg4.Text = "or get image file from Clipbord.";
             // 
@@ -489,7 +489,7 @@
             this.labelStartMsg3.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.labelStartMsg3.Location = new System.Drawing.Point(27, 242);
             this.labelStartMsg3.Name = "labelStartMsg3";
-            this.labelStartMsg3.Size = new System.Drawing.Size(877, 60);
+            this.labelStartMsg3.Size = new System.Drawing.Size(703, 48);
             this.labelStartMsg3.TabIndex = 16;
             this.labelStartMsg3.Text = "クリップボードから画像を取得します。";
             // 
@@ -539,7 +539,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(92, 116);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(15, 15);
+            this.label6.Size = new System.Drawing.Size(11, 12);
             this.label6.TabIndex = 24;
             this.label6.Text = "L";
             // 
@@ -548,7 +548,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(92, 87);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(16, 15);
+            this.label5.Size = new System.Drawing.Size(13, 12);
             this.label5.TabIndex = 23;
             this.label5.Text = "R";
             // 
@@ -557,7 +557,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(92, 57);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(17, 15);
+            this.label4.Size = new System.Drawing.Size(13, 12);
             this.label4.TabIndex = 22;
             this.label4.Text = "D";
             // 
@@ -566,7 +566,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(92, 28);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(17, 15);
+            this.label3.Size = new System.Drawing.Size(13, 12);
             this.label3.TabIndex = 21;
             this.label3.Text = "U";
             // 
@@ -574,28 +574,28 @@
             // 
             this.numericUpDownTrimLeft.Location = new System.Drawing.Point(126, 112);
             this.numericUpDownTrimLeft.Name = "numericUpDownTrimLeft";
-            this.numericUpDownTrimLeft.Size = new System.Drawing.Size(68, 22);
+            this.numericUpDownTrimLeft.Size = new System.Drawing.Size(68, 19);
             this.numericUpDownTrimLeft.TabIndex = 9;
             // 
             // numericUpDownTrimRight
             // 
             this.numericUpDownTrimRight.Location = new System.Drawing.Point(126, 84);
             this.numericUpDownTrimRight.Name = "numericUpDownTrimRight";
-            this.numericUpDownTrimRight.Size = new System.Drawing.Size(68, 22);
+            this.numericUpDownTrimRight.Size = new System.Drawing.Size(68, 19);
             this.numericUpDownTrimRight.TabIndex = 8;
             // 
             // numericUpDownTrimDown
             // 
             this.numericUpDownTrimDown.Location = new System.Drawing.Point(126, 53);
             this.numericUpDownTrimDown.Name = "numericUpDownTrimDown";
-            this.numericUpDownTrimDown.Size = new System.Drawing.Size(68, 22);
+            this.numericUpDownTrimDown.Size = new System.Drawing.Size(68, 19);
             this.numericUpDownTrimDown.TabIndex = 7;
             // 
             // numericUpDownTrimUp
             // 
             this.numericUpDownTrimUp.Location = new System.Drawing.Point(126, 24);
             this.numericUpDownTrimUp.Name = "numericUpDownTrimUp";
-            this.numericUpDownTrimUp.Size = new System.Drawing.Size(68, 22);
+            this.numericUpDownTrimUp.Size = new System.Drawing.Size(68, 19);
             this.numericUpDownTrimUp.TabIndex = 6;
             // 
             // buttonTrimming
@@ -637,7 +637,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(75, 151);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(34, 15);
+            this.label7.Size = new System.Drawing.Size(26, 12);
             this.label7.TabIndex = 26;
             this.label7.Text = "Size";
             // 
@@ -650,7 +650,7 @@
             0,
             0});
             this.numericUpDownBlurSize.Name = "numericUpDownBlurSize";
-            this.numericUpDownBlurSize.Size = new System.Drawing.Size(68, 22);
+            this.numericUpDownBlurSize.Size = new System.Drawing.Size(68, 19);
             this.numericUpDownBlurSize.TabIndex = 26;
             this.numericUpDownBlurSize.Value = new decimal(new int[] {
             5,
@@ -778,7 +778,7 @@
             0,
             0});
             this.numericUpDownOutputSize.Name = "numericUpDownOutputSize";
-            this.numericUpDownOutputSize.Size = new System.Drawing.Size(78, 22);
+            this.numericUpDownOutputSize.Size = new System.Drawing.Size(78, 19);
             this.numericUpDownOutputSize.TabIndex = 34;
             this.numericUpDownOutputSize.Value = new decimal(new int[] {
             1200,
@@ -791,7 +791,7 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(1210, 763);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(111, 15);
+            this.label10.Size = new System.Drawing.Size(88, 12);
             this.label10.TabIndex = 35;
             this.label10.Text = "Output size max";
             // 
@@ -800,7 +800,7 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(1290, 788);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(21, 15);
+            this.label8.Size = new System.Drawing.Size(17, 12);
             this.label8.TabIndex = 36;
             this.label8.Text = "px";
             // 
@@ -809,7 +809,7 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(1021, 247);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(68, 15);
+            this.label9.Size = new System.Drawing.Size(54, 12);
             this.label9.TabIndex = 37;
             this.label9.Text = "LineWidth";
             // 
@@ -817,7 +817,7 @@
             // 
             this.numericUpDownSurroundLineWidth.Location = new System.Drawing.Point(1100, 244);
             this.numericUpDownSurroundLineWidth.Name = "numericUpDownSurroundLineWidth";
-            this.numericUpDownSurroundLineWidth.Size = new System.Drawing.Size(66, 22);
+            this.numericUpDownSurroundLineWidth.Size = new System.Drawing.Size(66, 19);
             this.numericUpDownSurroundLineWidth.TabIndex = 38;
             this.numericUpDownSurroundLineWidth.Value = new decimal(new int[] {
             1,
@@ -841,7 +841,7 @@
             this.radioButtonOutputPNG.AutoSize = true;
             this.radioButtonOutputPNG.Location = new System.Drawing.Point(16, 46);
             this.radioButtonOutputPNG.Name = "radioButtonOutputPNG";
-            this.radioButtonOutputPNG.Size = new System.Drawing.Size(57, 19);
+            this.radioButtonOutputPNG.Size = new System.Drawing.Size(46, 16);
             this.radioButtonOutputPNG.TabIndex = 1;
             this.radioButtonOutputPNG.Text = "PNG";
             this.radioButtonOutputPNG.UseVisualStyleBackColor = true;
@@ -853,7 +853,7 @@
             this.radioButtonOutputJPG.Checked = true;
             this.radioButtonOutputJPG.Location = new System.Drawing.Point(16, 21);
             this.radioButtonOutputJPG.Name = "radioButtonOutputJPG";
-            this.radioButtonOutputJPG.Size = new System.Drawing.Size(55, 19);
+            this.radioButtonOutputJPG.Size = new System.Drawing.Size(45, 16);
             this.radioButtonOutputJPG.TabIndex = 0;
             this.radioButtonOutputJPG.TabStop = true;
             this.radioButtonOutputJPG.Text = "JPG";
@@ -864,7 +864,7 @@
             this.checkBoxTransparent.AutoSize = true;
             this.checkBoxTransparent.Location = new System.Drawing.Point(11, 21);
             this.checkBoxTransparent.Name = "checkBoxTransparent";
-            this.checkBoxTransparent.Size = new System.Drawing.Size(70, 19);
+            this.checkBoxTransparent.Size = new System.Drawing.Size(58, 16);
             this.checkBoxTransparent.TabIndex = 41;
             this.checkBoxTransparent.Text = "Enable";
             this.checkBoxTransparent.UseVisualStyleBackColor = true;
@@ -891,7 +891,7 @@
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(20, 102);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(17, 15);
+            this.label13.Size = new System.Drawing.Size(13, 12);
             this.label13.TabIndex = 45;
             this.label13.Text = "B";
             // 
@@ -900,7 +900,7 @@
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(20, 74);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(17, 15);
+            this.label12.Size = new System.Drawing.Size(13, 12);
             this.label12.TabIndex = 44;
             this.label12.Text = "G";
             // 
@@ -909,7 +909,7 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(20, 46);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(16, 15);
+            this.label11.Size = new System.Drawing.Size(13, 12);
             this.label11.TabIndex = 15;
             this.label11.Text = "R";
             // 
@@ -922,7 +922,7 @@
             0,
             0});
             this.numericUpDownTransBlue.Name = "numericUpDownTransBlue";
-            this.numericUpDownTransBlue.Size = new System.Drawing.Size(68, 22);
+            this.numericUpDownTransBlue.Size = new System.Drawing.Size(68, 19);
             this.numericUpDownTransBlue.TabIndex = 43;
             this.numericUpDownTransBlue.Value = new decimal(new int[] {
             255,
@@ -939,7 +939,7 @@
             0,
             0});
             this.numericUpDownTransGreen.Name = "numericUpDownTransGreen";
-            this.numericUpDownTransGreen.Size = new System.Drawing.Size(68, 22);
+            this.numericUpDownTransGreen.Size = new System.Drawing.Size(68, 19);
             this.numericUpDownTransGreen.TabIndex = 42;
             this.numericUpDownTransGreen.Value = new decimal(new int[] {
             255,
@@ -956,7 +956,7 @@
             0,
             0});
             this.numericUpDownTransRed.Name = "numericUpDownTransRed";
-            this.numericUpDownTransRed.Size = new System.Drawing.Size(68, 22);
+            this.numericUpDownTransRed.Size = new System.Drawing.Size(68, 19);
             this.numericUpDownTransRed.TabIndex = 27;
             this.numericUpDownTransRed.Value = new decimal(new int[] {
             255,
@@ -968,7 +968,7 @@
             // 
             this.numericUpDownCutSketchDelay.Location = new System.Drawing.Point(1324, 66);
             this.numericUpDownCutSketchDelay.Name = "numericUpDownCutSketchDelay";
-            this.numericUpDownCutSketchDelay.Size = new System.Drawing.Size(68, 22);
+            this.numericUpDownCutSketchDelay.Size = new System.Drawing.Size(68, 19);
             this.numericUpDownCutSketchDelay.TabIndex = 43;
             // 
             // label14
@@ -976,7 +976,7 @@
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(1242, 69);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(80, 15);
+            this.label14.Size = new System.Drawing.Size(64, 12);
             this.label14.TabIndex = 26;
             this.label14.Text = "Delay (sec)";
             // 
@@ -989,6 +989,7 @@
             this.buttonTrapezoidalCorrect.TabIndex = 44;
             this.buttonTrapezoidalCorrect.Text = "Trapezoidal Correct";
             this.buttonTrapezoidalCorrect.UseVisualStyleBackColor = true;
+            this.buttonTrapezoidalCorrect.Visible = false;
             this.buttonTrapezoidalCorrect.Click += new System.EventHandler(this.buttonTrapezoidalCorrect_Click);
             // 
             // label_ImgSize
@@ -996,7 +997,7 @@
             this.label_ImgSize.AutoSize = true;
             this.label_ImgSize.Location = new System.Drawing.Point(920, 930);
             this.label_ImgSize.Name = "label_ImgSize";
-            this.label_ImgSize.Size = new System.Drawing.Size(96, 15);
+            this.label_ImgSize.Size = new System.Drawing.Size(77, 12);
             this.label_ImgSize.TabIndex = 45;
             this.label_ImgSize.Text = "width x height";
             // 
@@ -1004,7 +1005,7 @@
             // 
             this.AllowDrop = true;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1412, 952);
+            this.ClientSize = new System.Drawing.Size(1414, 960);
             this.Controls.Add(this.label_ImgSize);
             this.Controls.Add(this.buttonTrapezoidalCorrect);
             this.Controls.Add(this.label14);
@@ -1042,7 +1043,7 @@
             this.MinimumSize = new System.Drawing.Size(1430, 999);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Easy Retouch      *Ver.2021-10-09";
+            this.Text = "Easy Retouch      *Ver.2025-02-08";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form1_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form1_DragEnter);
