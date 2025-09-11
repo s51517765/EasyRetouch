@@ -50,9 +50,9 @@ namespace 画像処理
         //using System.Drawing;
         const int pictureBoxWidth = 3600;
         const int pictureBoxHeight = 3600;
-        const int pictureBox2Width = 900;
-        const int pictureBox2Height = 900;
-        public int pictureBoxPreviewRate = pictureBoxWidth / pictureBox2Width;
+        const int pictureBox2Width = 1125;
+        const int pictureBox2Height = 1125;
+        public double pictureBoxPreviewRate = pictureBoxWidth / pictureBox2Width * 1.067; //マジックナンバー
         int FinalPictureWidth = pictureBoxWidth;
         int FinalPictureHeight = pictureBoxHeight;
         int previousPictureWidth;
@@ -147,8 +147,8 @@ namespace 画像処理
                 if (Math.Max(img.Width, img.Height) < canvas2.Height)
                 {
                     isPictureSmall = true;
-                    FinalPictureHeight = img.Height * pictureBoxPreviewRate;
-                    FinalPictureWidth = img.Width * pictureBoxPreviewRate;
+                    FinalPictureHeight = (int)(img.Height * pictureBoxPreviewRate);
+                    FinalPictureWidth = (int)(img.Width * pictureBoxPreviewRate);
                 }
                 else
                 {
@@ -276,7 +276,7 @@ namespace 画像処理
         private void buttonDrowEdgeLine_Click(object sender, EventArgs e)
         {
             //p = new Pen(color, (float)numericUpDownLineWidth.Value * pictureBoxPreviewRate);
-            int width = (int)numericUpDownSurroundLineWidth.Value * pictureBoxPreviewRate;
+            int width = (int)((double)numericUpDownSurroundLineWidth.Value * pictureBoxPreviewRate);
 
             if (!storeCurrentImage()) return;
 
@@ -359,10 +359,10 @@ namespace 画像処理
             Graphics g = Graphics.FromImage(canvas);
 
             //切り取る部分の範囲を決定する。
-            int up = (int)numericUpDownTrimUp.Value * pictureBoxPreviewRate;
-            int down = (int)numericUpDownTrimDown.Value * pictureBoxPreviewRate;
-            int right = (int)numericUpDownTrimRight.Value * pictureBoxPreviewRate;
-            int left = (int)numericUpDownTrimLeft.Value * pictureBoxPreviewRate;
+            int up = (int)((double)numericUpDownTrimUp.Value * pictureBoxPreviewRate);
+            int down = (int)((double)numericUpDownTrimDown.Value * pictureBoxPreviewRate);
+            int right = (int)((double)numericUpDownTrimRight.Value * pictureBoxPreviewRate);
+            int left = (int)((double)numericUpDownTrimLeft.Value * pictureBoxPreviewRate);
             FinalPictureWidth -= (right + left);
             FinalPictureHeight -= (up + down);
 
@@ -478,9 +478,9 @@ namespace 画像処理
                     g2.DrawRectangle(p, Math.Min(startPoint.X, endPoint.X), Math.Min(startPoint.Y, endPoint.Y), size_x, size_y);
                     pictureBox2.Image = canvas2;
                 }
+                // Debug.Print("move" + e.Location.X.ToString() + "," + e.Location.Y.ToString());
             }
         }
-
         private void pictureBox2_MouseUp(object sender, MouseEventArgs e)
         {
             if (FlagMask == 1) //Mask
@@ -491,7 +491,7 @@ namespace 画像処理
                 else if (radioButtonDrowMask_Green.Checked) brush.Color = Color.FromArgb(0, 255, 0);
                 else if (radioButtonDrowMask_Blue.Checked) brush.Color = Color.FromArgb(0, 0, 255);
                 else brush.Color = Color.FromArgb(0, 0, 0);
-                g.FillRectangle(brush, Math.Min(startPoint.X * pictureBoxPreviewRate, endPoint.X * pictureBoxPreviewRate), Math.Min(startPoint.Y * pictureBoxPreviewRate, endPoint.Y * pictureBoxPreviewRate), size_x * pictureBoxPreviewRate, size_y * pictureBoxPreviewRate);
+                g.FillRectangle(brush, Math.Min((int)(startPoint.X * pictureBoxPreviewRate), (int)(endPoint.X * pictureBoxPreviewRate)), Math.Min((int)(startPoint.Y * pictureBoxPreviewRate), (int)(endPoint.Y * pictureBoxPreviewRate)), (int)((double)size_x * pictureBoxPreviewRate), (int)((double)size_y * pictureBoxPreviewRate));
 
             }
             else if (FlagMask == 3) //Line
@@ -502,8 +502,8 @@ namespace 画像処理
                 else if (radioButtonSqLine_Green.Checked) color = Color.FromArgb(0, 255, 0);
                 else if (radioButtonSqLine_Blue.Checked) color = Color.FromArgb(0, 0, 255);
                 else color = Color.FromArgb(0, 0, 0);
-                p = new Pen(color, (float)numericUpDownLineWidth.Value * pictureBoxPreviewRate);
-                g.DrawRectangle(p, Math.Min(startPoint.X * pictureBoxPreviewRate, endPoint.X * pictureBoxPreviewRate), Math.Min(startPoint.Y * pictureBoxPreviewRate, endPoint.Y * pictureBoxPreviewRate), size_x * pictureBoxPreviewRate, size_y * pictureBoxPreviewRate);
+                p = new Pen(color, (float)((double)numericUpDownLineWidth.Value * pictureBoxPreviewRate));
+                g.DrawRectangle(p, Math.Min((int)(startPoint.X * pictureBoxPreviewRate), (int)(endPoint.X * pictureBoxPreviewRate)), Math.Min((int)(startPoint.Y * pictureBoxPreviewRate), (int)(endPoint.Y * pictureBoxPreviewRate)), (int)((double)size_x * pictureBoxPreviewRate), (int)((double)size_y * pictureBoxPreviewRate));
             }
             else if (FlagMask == 2)
             {
@@ -512,12 +512,12 @@ namespace 画像処理
                 int blur_size = (int)numericUpDownBlurSize.Value;
                 blur_size *= Math.Max(canvas.Size.Height, canvas.Size.Width) / Math.Max(canvas2.Size.Height, canvas2.Size.Width);
 
-                startPoint.X *= pictureBoxPreviewRate;
-                startPoint.Y *= pictureBoxPreviewRate;
-                endPoint.X *= pictureBoxPreviewRate;
-                endPoint.Y *= pictureBoxPreviewRate;
-                size_x *= pictureBoxPreviewRate;
-                size_y *= pictureBoxPreviewRate;
+                startPoint.X = (int)((double)startPoint.X * pictureBoxPreviewRate);
+                startPoint.Y = (int)((double)startPoint.Y * pictureBoxPreviewRate);
+                endPoint.X = (int)((double)endPoint.X * pictureBoxPreviewRate);
+                endPoint.Y = (int)((double)endPoint.Y * pictureBoxPreviewRate);
+                size_x = (int)((double)size_x * pictureBoxPreviewRate);
+                size_y = (int)((double)size_y * pictureBoxPreviewRate);
 
                 if (endPoint.X > FinalPictureWidth) endPoint.X = FinalPictureWidth;
                 else if (endPoint.X < 0) endPoint.X = 0;
@@ -602,7 +602,6 @@ namespace 画像処理
             fillOutOfCanvas();
             update_LabelImgSize();
         }
-
         private void buttonRotate270deg_Click(object sender, EventArgs e)
         {
             if (!storeCurrentImage()) return;
