@@ -114,6 +114,24 @@ namespace 画像処理
             else label_ImgSize.Text = FinalPictureWidth.ToString("f0") + " x " + FinalPictureHeight.ToString("f0");
         }
 
+        private void chk_isPictureSmall(Image img)
+        {
+            //画像がPreviewエリアより小さいとき
+            if (Math.Max(img.Width, img.Height) < numericUpDownOutputSize.Value)
+            {
+                isPictureSmall = true;
+                FinalPictureHeight = (int)(img.Height * pictureBoxPreviewRate);
+                FinalPictureWidth = (int)(img.Width * pictureBoxPreviewRate);
+            }
+            else
+            {
+                isPictureSmall = false;
+                float w = (float)img.Width;
+                float h = (float)img.Height;
+                FinalPictureHeight = (int)(h * reSizeRate);
+                FinalPictureWidth = (int)(w * reSizeRate);
+            }
+        }
         private void PreviewDrowPicture(Image defImg = null)
         {
             try
@@ -143,21 +161,7 @@ namespace 画像処理
                     reSizeRate = Math.Min((float)canvas.Width / (float)img.Width, (float)canvas.Height / (float)img.Height);
                 }
 
-                //画像がPreviewエリアより小さいとき
-                if (Math.Max(img.Width, img.Height) < canvas2.Height)
-                {
-                    isPictureSmall = true;
-                    FinalPictureHeight = (int)(img.Height * pictureBoxPreviewRate);
-                    FinalPictureWidth = (int)(img.Width * pictureBoxPreviewRate);
-                }
-                else
-                {
-                    isPictureSmall = false;
-                    float w = (float)img.Width;
-                    float h = (float)img.Height;
-                    FinalPictureHeight = (int)(h * reSizeRate);
-                    FinalPictureWidth = (int)(w * reSizeRate);
-                }
+                chk_isPictureSmall(img);
 
                 //画像をcanvasの座標(0, 0)の位置に描画する
                 g.DrawImage(img, 0, 0, FinalPictureWidth, FinalPictureHeight);
@@ -243,7 +247,6 @@ namespace 画像処理
 
                 string suffix = textBoxSuffix.Text;
                 int suffix_no = 0;
-
 
                 Bitmap canvas0 = FinalResize(canvas);
                 if (radioButtonOutputJPG.Checked)
@@ -662,15 +665,10 @@ namespace 画像処理
             //画像の一部を描画する
             g0.DrawImage(canvas, desRect, srcRect, GraphicsUnit.Pixel);
 
-            if (isPictureSmall) //アルゴリズムとして失敗したかも
-            {
-                canvas0 = new Bitmap(canvas0, (int)(FinalPictureWidth / pictureBoxPreviewRate), (int)(FinalPictureHeight / pictureBoxPreviewRate));
-            }
-            else
-            {
-                float finalResizeRate = Math.Min((float)numericUpDownOutputSize.Value / (float)FinalPictureWidth, (float)numericUpDownOutputSize.Value / (float)FinalPictureHeight);
-                canvas0 = new Bitmap(canvas0, (int)(FinalPictureWidth * finalResizeRate), (int)(FinalPictureHeight * finalResizeRate));
-            }
+            float finalResizeRate = Math.Min((float)numericUpDownOutputSize.Value / (float)canvas0.Width * (float)pictureBoxPreviewRate, (float)numericUpDownOutputSize.Value / (float)canvas0.Height * (float)pictureBoxPreviewRate);
+            finalResizeRate = (finalResizeRate < 1) ? finalResizeRate : 1;
+            canvas0 = new Bitmap(canvas0, (int)(FinalPictureWidth / pictureBoxPreviewRate * finalResizeRate), (int)(FinalPictureHeight / pictureBoxPreviewRate * finalResizeRate));
+
             return canvas0;
         }
 
